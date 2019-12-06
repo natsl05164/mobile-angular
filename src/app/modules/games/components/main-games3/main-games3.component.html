@@ -1,0 +1,38 @@
+<!--casino-->
+<div class="container wrapper">
+  <div class="row">
+ 
+    <ng-container *ngIf="gamesView">
+      <div class="col-12 col-md-6" *ngFor="let game of  gamesView.Games">
+
+        <!--*ngFor=""-->
+        <a routerLink="/games/sports/{{game.ID}}" class="box">
+          <div class="overlay-wrapper  ">
+            <div class="overlay-hvrshade">
+            </div>
+            <div class="abs-pos top-right" *ngIf="game.MobileDownloadLink||game.DesktopDownloadLink">
+
+              <a href="game.MobileDownloadLink"><div class="android_download_icon"></div> </a>
+              <a href="game.DesktopDownloadLink"><div class="pc_download_icon"></div> </a>
+            </div>
+            <button class="btn btn-fancy  btn-hvrplay" routerLink="/games/sports/{{game.ID}}">Enter</button>
+            <div class="overlay-name">
+              <h4 class="title">{{game.Name}}</h4>
+              <h5>SUITE</h5>
+              <div>
+                <div class="powerby">
+                  <div>{{game.Provider}}</div>
+                </div>
+
+              </div>
+            </div>
+            <img [src]="BASE_MEDIA_URL + game.ImgSrc " class="img-fluid" />
+            <div class="box-desc">{{game.Description}} </div>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+
+  </div>
+
+</div>

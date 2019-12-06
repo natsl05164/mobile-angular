@@ -1,0 +1,12 @@
+<app-main-carousel [slides]="slides"></app-main-carousel>
+
+
+
+<div class="app-wrapper container mt-2">
+  <app-site-ann [announcement]="announcement" [isError]="isAnnJPError"></app-site-ann>
+  <app-home-info [socialHandles]="appSettings.websiteData.SocialHandles"></app-home-info>
+</div>
+
+<div class="fixed-bottom-left">
+  <app-jackpot [jackpotAmount]="miscStore.jackpotAmount$|async" [isError]="isAnnJPError"></app-jackpot>
+</div>

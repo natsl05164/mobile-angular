@@ -1,0 +1,36 @@
+@import "variables";
+
+.nav{
+  margin-bottom:1em;
+}
+.nav-btn-item {
+  display: block;
+  width: 100%;
+  padding: 1em 0;
+  border: 1px solid app-color(background,base);
+  background-color: app-color(background,base);
+  border-radius: $border-radius-sm;
+
+  &.active {
+    border-color: app-color(background,light);
+    background-color: app-color(background,light);
+  }
+}
+
+.channels-logo {
+  background: url('/assets/images/deposit-channels/deposit-channels.png') no-repeat;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.logo-bank-transfer {
+  background-position: -0px -0px;
+  width: 73px;
+ 
+}
+
+.logo-paytrust88 {
+  background-position: -0px -30px;
+  width: 73px;
+ 
+}

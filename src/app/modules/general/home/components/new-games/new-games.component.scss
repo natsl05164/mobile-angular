@@ -1,0 +1,46 @@
+/*@import "mixins";*/
+@import "variables";
+
+$box-size: 100px;
+$gutter: $box-size * 0.1;
+
+:host {
+  padding: 20px;
+}
+ul {
+  @include ul-style-none;
+  overflow : auto;
+  /*overflow-y: hidden;*/
+  /*height: $game-box-height;*/
+  white-space: nowrap;//force to be 1 line
+  padding-bottom:10px;
+}
+
+li {
+  display: inline-block;
+  margin-right: $gutter;
+}
+
+img {
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* width: 100%; */
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.game-box {
+  display: block;
+  max-width: $box-size;
+  height: $box-size;
+}
+
+
+
+
+/*@import "mobile-variables";*/
+.title {
+  color: text-color(primary, base);
+}
+
+

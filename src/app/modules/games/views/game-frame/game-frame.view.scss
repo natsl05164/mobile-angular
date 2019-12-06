@@ -1,0 +1,35 @@
+@import 'variables';
+/*@import 'mixins';*/
+.container{
+  min-height:500px;
+}
+.maintenance-box {
+  display: block;
+  text-align: left;
+  padding: 2*$spacing--default;
+  background-color: app-color(primary,light);
+  border: $border-width solid $border-color--contrast-primary;
+  color: color(primary,dark);
+
+  & h1 {
+    color: color(primary,light);
+  }
+
+  & hr {
+    background-color: app-color(primary,light);
+  }
+}
+/*a {
+  color: #dc8100;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+  text-decoration: none;
+}*/
+
+
+.container {
+  @include mobile_desktop_style(padding, 0 $spacing--default,0);
+}

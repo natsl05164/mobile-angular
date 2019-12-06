@@ -1,0 +1,73 @@
+@import "variables";
+/*@import "mixins";*/
+:host .container-box .title {
+  padding: 0.7em 1.2em;
+  /*background-color: var(--bg-3);*/
+  @include mobile_desktop_style(background-color, color(background,light) , color(primary,dark) );
+}
+
+
+ 
+
+   .content {
+    padding: 15px;
+  }
+
+.container-wrapper {
+  /*background-color: var(--bg-1);*/
+  @include mobile_desktop_style(background-color, app-color(background,light), app-color(primary,dark) );
+}
+
+.container {
+  /*background-color: var(--bg-0);*/
+  @include mobile_desktop_style(background-color, app-color(background,light), app-color(primary,dark) );
+  top: 2em;
+  position: relative;
+
+  & .head-content {
+    padding: 5px;
+    margin-top: 0.7em;
+  }
+}
+
+    .icon-shield {
+    font-size: 4rem;
+    color: text-color(secondary,light);
+  }
+
+.icon-repeat {
+  font-size: 1rem;
+  color: text-color(secondary,dark);
+}
+
+ul.nav{ 
+  margin-right:25px;
+}
+
+
+.acc_safety_info {
+  padding-top: 0.4em;
+
+  & .info-2 {
+    padding-top: 0.3em;
+    font-size: 1.8rem;
+  }
+
+  & i {
+    padding-right: 0.4em;
+    color: text-color(secondary,light,light);
+  }
+}
+
+
+:host-context(.mobile) {
+
+  .container {
+    top: 0;
+  }
+}
+
+
+.btn-logout {
+  float: right;
+}

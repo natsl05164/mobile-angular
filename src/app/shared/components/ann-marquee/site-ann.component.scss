@@ -1,0 +1,15 @@
+/*.ann-wrapper {
+
+  & i {
+    color: var(--primary-500);
+  }
+}*/
+
+@import "variables";
+
+mark, .mark {
+  padding: 0.2em;
+  background-color: inherit;
+  color: app-color(primary,base);
+}
+ 

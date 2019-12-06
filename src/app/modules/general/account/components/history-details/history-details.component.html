@@ -1,0 +1,10 @@
+<div class="  box-body"  [@slideIn]>
+  <div class="row" *ngFor="let item of historyDetail">
+    <div class="col-12">
+      <div class=" mat-group">
+        <input type="text" class="mat-control" [value]="item[1]||'-'"  required="required" disabled="disabled" />
+        <label>{{item[0]}}</label>
+      </div>
+    </div>
+  </div> 
+</div>

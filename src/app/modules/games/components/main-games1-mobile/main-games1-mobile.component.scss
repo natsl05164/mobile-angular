@@ -1,0 +1,68 @@
+/*@import "mixins";*/
+@import "variables";
+
+$box-width: 26.66667vmin;
+/*$box-height: 8.8vmin;*/
+$gutter: 0;
+
+:host {
+  padding: 20px;
+}
+
+ul {
+  @include ul-style-none;
+  overflow: auto;
+  /*overflow-y: hidden;*/
+  /*height: $game-box-height;*/
+  white-space: nowrap; //force to be 1 line
+  /*padding-bottom: 10px;*/
+}
+
+li {
+  display: inline-block;
+  margin-right: $gutter;
+}
+
+.img-block {
+ 
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+ 
+.game-box {
+  display: block;
+  min-width: $box-width;
+  /*height: $box-height;*/
+  color: text-color(primary2,base);
+ 
+}
+
+.title {
+  color: text-color(primary2,light);
+  padding: 5px;
+}
+
+
+/*TODO variables*/
+.btn {
+  //
+  //@include top-to-bottom-gradient($gradient-11, 16%, $gradient-12,45%, $gradient-13,88%);
+  background: linear-gradient(to bottom, #0e3f54 10%, #1a3744 20%, #233842 45%, #223f4c 55%, #2c5161 88%, #2e525f, 98%, #2b3f46 100%);
+  //background-image: linear-gradient(-180deg, #7EA1B1 16%, #6E96A7 48%, #4e7f94 49%, #4e7f94 85%, #477487 91%, #40687A 92%, #32515F 100%);
+  //background-image: linear-gradient(-180deg, #7EA1B1 16%, #5f8a9d 26%, #4e7f94 45%, #3c6273 55%, #477487 85%, #355766, 90%);
+  border-color: #072C39;
+  height: 65px;
+
+  & .poweredBy-logo {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &:active, &.active {
+    // @include top-to-bottom-gradient($gradient-01, 10%, $gradient-02, 45%, $gradient-03,88%);
+    background: linear-gradient(to bottom, #0c3e54 10%, #074e6f 20%, #266a88 45%, #1d688a 55%, #3e7e96 88%, #538fa9, 98%, #aeb8bd 100%);
+    //  background: linear-gradient(to bottom, #5d9fbd 10%, #459cc3 20%, #277598 45%, #2c6179 55%, #032b3a 88%, #0f1c21, 98%, #18313c 100%);
+  }
+}
+

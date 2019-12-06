@@ -1,0 +1,107 @@
+@import "../../pallete-generator";
+ 
+
+$primary: #2a8fbd; //turqoise
+$accent:#ff0000;
+$secondary: #b3b3b3; //gray
+$tertiery: #dab867;//gold
+$foreground: #1F1F1F;
+$background: #1F1F1F; //grey
+/*https: //blog.yipl.com.np/defining-color-palette-in-sass-with-variables-6464c3c3b5e5*/
+ /*$colors: ($primary $accent $secondary $tertiery $foreground $background );*/
+
+$primary-text: #fff;
+$primary-text2: #b3b3b3;
+$accent-text: #ffc107;
+$secondary-text: #2a8fbd; //turqoise
+$background-text: #f2f2f2; //grey
+
+
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #C70022;
+$lightRed: #ff0000;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+$pale-aqua: #BFDBF7;
+
+
+/*E.g.
+  .banner {
+  background-color: app-color(blue,base);
+
+
+  Accents are colors that look nice with the base-color but are only used sparingly so that it really draws attention.
+  Secondary color is contrast to primary color
+}*/
+
+$pallete: (
+  primary: (
+    base: $primary,
+    lighter: pale($primary),
+    light: light($primary),
+    dark:  dark($primary),
+    darker:  #023144
+  ), 
+  accent: (
+    base: $accent,
+    light:  pale($accent),
+    dark:  dark($accent)
+  ),
+  secondary: ( 
+    base: $secondary,
+    lighter: pale($secondary),
+    light: light($secondary),
+    dark:  dark($secondary),
+   darker:  dark(dark($secondary))
+  ), 
+  tertiery: (
+    base: $tertiery,
+    light:  pale($tertiery),
+    dark:  dark($tertiery)
+  ),
+  foreground: (
+    base: $foreground,
+    light:  pale($foreground),
+    dark: dark($foreground),
+    darker:  dark(dark($foreground))
+  ),
+  background: (
+    base: $background,
+    light:  pale($background),
+    dark: dark($background)
+  )
+);
+
+
+$text-pallete: (
+	primary: (
+		base: $primary-text,
+		light: pale($primary-text),
+    dark:  dark($primary-text)
+  ),
+  	primary2: (
+		base: $primary-text2,
+		light: pale($primary-text2),
+    dark:  dark($primary-text2)
+  ),
+  accent: (
+    base: $accent-text,
+    light:  pale($accent-text),
+    dark:  dark($accent-text)
+  ),
+  secondary: ( 
+    base: $secondary-text,
+    light: pale($secondary-text),
+    dark:  dark($secondary-text)
+  ),
+  background: (
+    base: $background-text,
+    light:  pale($background-text),
+    dark: dark($background-text)
+  )
+);

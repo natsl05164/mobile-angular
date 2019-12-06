@@ -1,0 +1,29 @@
+@import "variables";
+.dl-horizontal dt {
+  text-align: left;
+  font-weight: normal;
+  width: 130px;
+  float: left;
+  overflow: hidden;
+  clear: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dl-horizontal dd {
+  margin-left: 5px;
+  text-align: left;
+}
+
+
+.bankInfo-box {
+  padding: 1.5em 1em;
+  margin: 0 0 15px 0;
+  border: 1px solid app-color(primary,base);
+  background-color: app-color(background,light);
+}
+
+
+.nav-tabs {
+  margin-bottom: 1rem;
+}

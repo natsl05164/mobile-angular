@@ -1,0 +1,174 @@
+$pallete: (primary: ( base: #fff, light: #000, dark: #fff ))!default;
+$text-pallete: (primary: ( base: #fff, light: #000, dark:#fff ))!default;
+
+@mixin ul-style-none {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+@mixin linear-gradient($color1, $color2,$color3: null) {
+  @if $color3 {
+    background: -webkit-linear-gradient($color1, $color2,$color3);
+    background: -o-linear-gradient($color1, $color2,$color3);
+    background: -moz-linear-gradient($color1, $color2,$color3);
+    background: linear-gradient($color1, $color2,$color3);
+  }
+  @else {
+    background: -webkit-linear-gradient($color1, $color2);
+    background: -o-linear-gradient($color1, $color2);
+    background: -moz-linear-gradient($color1, $color2);
+    background: linear-gradient($color1, $color2);
+  }
+}
+
+
+@mixin top-to-bottom-gradient($fromColor, $startPos, $midColor, $midPos, $toColor: null, $endPos: null) {
+  //$endPos must be less than 90%
+  @if $toColor {
+    background: $midColor;
+    background: -webkit-linear-gradient(top, $fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10%, $endPos, $toColor $endPos, darken($toColor,10%), $endPos+10%, darken($toColor,20%) 100%);
+    background: -moz-linear-gradient(top, $fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10%, $toColor $endPos, darken($toColor,10%), $endPos+10%, darken($toColor,20%) 100%);
+    background: -o-linear-gradient(top, $fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10%, $toColor $endPos, darken($toColor,10%), $endPos+10%, darken($toColor,20%) 100%);
+    background: linear-gradient(to bottom, $fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10%, $toColor $endPos, darken($toColor,10%), $endPos+10%, darken($toColor,20%) 100%);
+  }
+  @else {
+    background: $midColor;
+    background: -webkit-linear-gradient(top,$fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10% );
+    background: -moz-linear-gradient(top, $fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10% );
+    background: -o-linear-gradient(top,$fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10% );
+    background: linear-gradient(to bottom,$fromColor $startPos, darken($fromColor,10%) $startPos+10%, $midColor $midPos, darken($midColor,10%) $midPos+10% );
+  }
+}
+
+
+@mixin full-width {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+
+
+@mixin mobile_desktop_style($prop, $desktopValues,$mobileValues) {
+  //mobile
+  @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+    /*@each $value in $mobileValues {
+      $prop_values: append($mobile_prop_values,$value); //separator is a space
+    }*/
+    #{$prop}: $mobileValues;
+  }
+  //desktop
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+
+    $desktop_prop_values: ();
+
+    /*@each $value in $desktopValues {
+      $prop_values: append($desktopValues,$value); //separator is a space
+    }*/
+    #{$prop}: $desktopValues;
+  }
+}
+
+
+
+@function app-color($color,$tone,$opacity: 1) {
+
+
+  @if map-has-key($pallete,$color) {
+    $color: map-get($pallete,$color);
+
+    @if map-has-key($color,$tone) {
+      $tone: map-get($color,$tone);
+
+      // Get the alpha setting
+      $alpha: if(type-of($opacity) == 'number', $opacity, map-get($opacity-lvl, $opacity));
+
+      // Set the alpha of the color
+      @if $alpha {
+        $tone: rgba($tone, $alpha);
+      }
+
+
+      @return $tone;
+    }
+
+    @warn "unknown tone `#{$tone}` in color";
+    @return null;
+  }
+
+  @warn "unknown color `#{$color}` in palette";
+  @return null;
+}
+
+
+//Transparency
+$opacity-lvl: ( 'light': 0.8, // opacity used with lighter colors
+'dark': 0.4 // opacity used with darker colors
+// ... etc.
+);
+
+
+@function text-color($color,$tone,$opacity :1) {
+   
+  @if map-has-key($text-pallete,$color) {
+    $color: map-get($text-pallete,$color);
+
+    @if map-has-key($color,$tone) {
+      $tone: map-get($color,$tone);
+
+      // Get the alpha setting
+      $alpha: if(type-of($opacity) == 'number', $opacity, map-get($opacity-lvl, $opacity));
+
+      // Set the alpha of the color
+      @if $alpha {
+        $tone: rgba($tone, $alpha);
+      }
+  
+      @return $tone;
+       
+    }
+
+    @warn "unknown tone `#{$tone}` in color";
+    @return null;
+  }
+
+  @warn "unknown color `#{$color}` in palette";
+  @return null;
+}
+
+ 
+@function color-opacity($name: primary, $tone :base, $opacity: 0) {
+  $color: app-color($name,$tone);
+
+  // Get the named opacity level, if it exists
+  @if map-has-key($opacity-lvl, $opacity) {
+    $opacity: map-get($opacity-lvl, $opacity);
+  }
+
+  // Use rgba() to manipulate the color's alpha level
+  @return rgba($color, $opacity);
+}
+ 
+
+//for more fine tuning than above
+/*// https://scotch.io/tutorials/aesthetic-sass-2-colors*/
+$color-interval: 10% !global;
+//tint/shade interval
+
+/*.panel {
+  background-color: mix-color-level('primary', 2);
+}*/
+
+@function mix-color-level($color-name: primary, $level: 0) {
+  $color: app-color($color-name,base);
+  $color-base: if($level < 0, #000, #fff);
+
+  @return mix($color-base, $color, $level * $color-interval);
+}
+
+/*The Web Content Accessibility Guidelines state that the contrast ratio between foreground images/text and a background should be at least 4.5:1 (3:1 for larger text) for level AA, and 7:1 (4.5:1 for larger text) for level AAA.*/
+/*https: //contrast-ratio.com/#hsla%2881%2C72%25%2C60%25%2C20.7%29-on-grey*/
+@function contrast-foreground-color($bgcolor, $threshold: .65) {
+  @return if(lightness($bgcolor) >= $threshold, $color-dark, $color-light);
+}

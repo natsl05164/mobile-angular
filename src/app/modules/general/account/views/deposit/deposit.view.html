@@ -1,0 +1,12 @@
+<ng-container *ngIf="{balanceState$: balanceStore.state$ | async, promoState$: promoStore.state$ | async, accViewState$: accountStore.state$ | async} as subs">
+
+  <!--//*ngIf added so that the component will not init untill the input is available, as the component onInit lifecycle require the input data-->
+  <app-deposit #parent *ngIf="subs.accViewState$.accountView" [accountView]="subs.accViewState$.accountView" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)">
+    <app-direct-deposit-form *ngIf="subs.promoState$.promoInfo" [accountView]="subs.accViewState$.accountView" [promoInfo]="subs.promoState$.promoInfo" [depositType]="parent.depositType" [requestState]="subs.balanceState$.requests.directDeposit" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)"></app-direct-deposit-form>
+    <app-online-deposit-form *ngIf="subs.promoState$.promoInfo" [accountView]="subs.accViewState$.accountView" [promoInfo]="subs.promoState$.promoInfo" [depositType]="parent.depositType" [requestState]="subs.balanceState$.requests.onlineDeposit" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)"></app-online-deposit-form>
+  </app-deposit> 
+  <div *ngIf="subs.accViewState$.getAccountView && subs.accViewState$.getAccountView.inProgress">
+    <my-spinner></my-spinner>
+  </div>
+</ng-container>
+

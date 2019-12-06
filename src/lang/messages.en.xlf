@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="MainWallet" datatype="html">
+        <source>Main</source>
+        <target state="final">Main</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/general/account/components/account/account.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Transfer" datatype="html">
+        <source>Transfer</source>
+        <target>Transfer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/general/account/components/account/account.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Deposit" datatype="html">
+        <source>Deposit</source>
+        <target>Deposit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/general/account/components/account/account.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Withdrawal" datatype="html">
+        <source>Withdrawal</source>
+        <target>Withdrawal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/general/account/components/account/account.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="History" datatype="html">
+        <source>History</source>
+        <target>History</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/general/account/components/account/account.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

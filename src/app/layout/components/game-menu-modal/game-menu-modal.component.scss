@@ -1,0 +1,13 @@
+@import "variables";
+
+.box-body {
+  padding: $spacing--default;
+  background: app-color(primary,dark);  
+}
+
+img {
+
+  width:120px;
+  height:auto;
+
+}

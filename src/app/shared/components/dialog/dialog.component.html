@@ -1,0 +1,9 @@
+ 
+<div [@expand-in-out] class="ce-modal__backdrop"
+     *ngIf="isOpen"
+     (click)="closeOnBackdropClick($event)" [style.padding-top]="dialogPositionY ">
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn"><i class="icon-close"></i></button>
+  <div class="ce-modal__content-container">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,206 @@
+@import "variables";
+:host .content {
+  height: auto!important; /*TODO */
+}
+
+.game_category > div {
+  border: 1px solid app-color(background,light);
+  ;
+}
+
+
+div.games {
+  /*padding: 0px 6px;*/
+  &.flex-row {
+    justify-content: flex-start!important;
+  }
+
+}
+
+div.opacity_content {
+  position: relative;
+  overflow: hidden;
+}
+
+div.opacity_background {
+  position: absolute;
+  height: 100%;
+  width: 100%; 
+  top: 0;
+  left: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.80;
+  -khtml-opacity: 0.80;
+  opacity: 0.80; 
+}
+
+
+/*==== GAME BOX  BEGIN ======*/
+.game-box {
+  overflow: hidden;
+  margin: 6px 4px;
+  min-width: 146px; /*IMAGE MIN WIDTH MUST BE 146, MAX 6 game-box per row */
+  border: 2px solid transparent;
+  /*display: block;*/
+  position: relative;
+  min-height: 190px; /*HEIGHT is a KNOWN value*/
+  cursor: pointer;
+  flex-basis: auto;
+  -webkit-box-flex: 1;
+  /*flex-grow: 1;*/ /*can't set this here*/
+  z-index: 1;
+
+  & div.image {
+    background: #000; /*TODO?*/
+    height: 100%;
+    position: relative;
+
+    & > img {
+      height: auto;
+      position: absolute;
+      width: auto;
+      display: block;
+      -webkit-transition: all .4s linear;
+      transition: all .4s linear;
+    }
+  }
+
+  & div.name {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  & div.name * {
+    z-index: 1;
+  }
+
+  & div.opacity_background {
+    background: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+    filter: alpha(opacity=85);
+    -moz-opacity: 0.85;
+    -khtml-opacity: 0.85;
+    opacity: 0.85;
+  }
+
+
+  & div.opacity_content div.title-wrap {
+    display: table;
+    width: 100%;
+  }
+
+  & .game-title {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 39px;
+    color: text-color(primary,base);
+    background-color: app-color(background,dark,light);
+  }
+}
+
+.game-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: app-color(background,light,dark); 
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+ 
+.game_button_play, .game_button_try {
+  position: relative;
+  display: none;
+  top: -116px;
+  text-align: center; 
+  height: 26px;
+  line-height: 26px;
+  font-family: dinpro, sans-serif;
+  font-size: 14px;
+  margin-bottom: 1px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  display: block;
+  opacity: 1;
+}
+
+
+.game_button_play {
+  background: app-color(primary,dark);
+  color: text-color(primary,base);
+  top: 0px;
+}
+
+
+.game_button_try {
+  background: app-color(background,light);
+  color: app-color(primary,base);
+  top: 170px;
+}
+
+.game-box:hover {
+  border: 2px solid text-color(primary2,base);
+  background: app-color(foreground,base);
+
+  & .image img.unveiled {
+    opacity: 1 !important;
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  & .game-overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+
+    &.game-has-try {
+      & .game_button_play, & .game_button_try {
+        top: 73px; /*TODO*/
+        opacity: 1;
+      }
+    }
+  }
+
+  & .game-title {
+    color: text-color(primary,base);
+  }
+}
+
+
+/*==== GAME BOX  END ======*/
+
+
+.g_category-nav {
+  margin-top: -250px;
+
+  & .nav-item {
+    border-right: 1px solid app-color(background,dark);
+    background-color: app-color(background,light);
+
+
+    & .navlink {
+      display: block;
+      padding: 0.7em;
+      width: 100%;
+      background-color: inherit;
+      color: var(--bg-5);
+    }
+
+    & .navlink:hover, & .navlink.active {
+      background-color: app-color(primary,dark);
+      color: text-app-color(primary,base);
+    }
+
+    &:last-of-type {
+      border-right: none;
+    }
+  }
+}

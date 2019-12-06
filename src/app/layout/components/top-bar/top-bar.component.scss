@@ -1,0 +1,172 @@
+@import "variables";
+.main-header {
+  z-index: 10;
+  position: relative;
+  /*height: 100px;*/  /*height follow the img logo max-height*/
+}
+
+
+.flex-col {
+  max-height: 100%;
+}
+
+
+
+/*#logo {
+  width: 297px;
+}*/
+
+.logo-left .logo {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.logo a {
+  text-decoration: none;
+  display: block;
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin: 0;
+}
+
+
+.logo img {
+  display: block;
+  width: auto;
+}
+ 
+.header-wrapper:not(.stuck) .logo img {
+  transition: max-height .5s;
+}
+
+#logo img {
+  max-height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .md-logo-center .logo {
+    -ms-flex-order: 2;
+    order: 2;
+    text-align: center;
+    margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-logo-center .logo img {
+    margin: 0 auto;
+  }
+}
+
+.flex-left {
+  margin-right: auto;
+ 
+}
+
+.flex-right {
+  margin-left: auto;
+  
+}
+
+/*.header-wrapper .flex-right {
+  color:var(--primary-500)
+}*/
+
+
+@media screen and (max-width: 768px) {
+  .md-logo-center .flex-left {
+    -ms-flex-order: 1;
+    order: 1;
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-logo-center .flex-right {
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+    -ms-flex-order: 3;
+    order: 3;
+  }
+}
+
+:host {
+
+  & .btn {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 77px;
+    border-radius: $border-radius;
+  }
+}
+
+@media (max-width: 768px) {
+  [data-show=hide-for-medium], .hide-for-medium {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  [data-show=show-for-medium], .show-for-medium {
+    display: none !important;
+  }
+}
+
+/*top-right elements*/
+.flex-right .flex-row {
+  align-items: baseline;
+
+  & span {
+  }
+
+  & i {
+    color:  text-color(secondary,dark); 
+    vertical-align: middle;
+    font-size: 1.2rem;
+  }
+
+  & > * {
+    font-size: 0.8rem;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+
+
+  /*& .btn-primary {
+    background: #2a8fbd;
+    color: #fff !important;
+    border: none;
+
+    &:hover {
+      background: #38c0ff;
+    }
+  }
+
+  & .btn-secondary {
+    background: #cc001b;
+    color: #fff !important;
+    border: none;
+
+    &:hover {
+      background: #ff0000;
+    }
+  }*/
+}
+
+
+
+
+.acc-panel {
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  text-align:right;
+}
+
+
+
+.icon-chat{
+  color: app-color(primary,light)!important;
+}

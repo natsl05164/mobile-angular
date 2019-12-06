@@ -1,0 +1,11 @@
+@import "variables";
+.bottom_text>* {
+  font-weight: 700;
+}
+
+
+.box {
+  border: 1px solid text-color(primary,light);
+  width: 100px;
+  height: 100px;
+}

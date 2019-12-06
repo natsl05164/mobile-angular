@@ -1,0 +1,80 @@
+
+
+$side-nav-width: 100; //px
+$navItem-content-width: 210; //px
+$right-side-bar-width: 18.75rem;
+$top-bar-height: 47px;
+ 
+
+.mobile {
+
+
+  &.full-container {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  & .side-nav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    transform: translate3d(-100%,0,0);
+    visibility: hidden;
+
+    &.open {
+      transform: none;
+      visibility: visible;
+    }
+
+
+    &.navContentOpen {
+      width: ($side-nav-width + $navItem-content-width)* 1px; //the width must be same as in main-nav-mobile width
+    }
+  }
+
+  & .main-content {
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(.25,.8,.25,1);
+    transition-property: transform,margin-left,margin-right,right,left;
+    z-index: 1;
+
+    &.sideNavOpen {
+      margin-left: $side-nav-width * 1px; //the width must be same as in main-nav-mobile width
+      margin-right: $side-nav-width* -1px; //the width must be same as in main-nav-mobile width
+      & app-top-bar-mobile {
+        left: $side-nav-width * 1px;
+        right: $side-nav-width * -1px;
+      }
+    }
+
+    &.navContentOpen {
+      margin-left: ($side-nav-width + $navItem-content-width)* 1px; //the width must be same as in main-nav-mobile width
+      margin-right: ($side-nav-width + $navItem-content-width)* -1px; //the width must be same as in main-nav-mobile width
+      & app-top-bar-mobile {
+        left: ($side-nav-width + $navItem-content-width) * 1px;
+        right: ($side-nav-width + $navItem-content-width) * -1px;
+      }
+    }
+
+    &.rightSideBarOpen {
+      margin-right: $right-side-bar-width;
+      margin-left: $right-side-bar-width *-1;
+
+      & app-top-bar-mobile {
+        right: $right-side-bar-width;
+        left: $right-side-bar-width *-1;
+      }
+    }
+  }
+
+  & .content {
+    margin-top: $top-bar-height;
+  }
+}

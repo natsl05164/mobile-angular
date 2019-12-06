@@ -1,0 +1,73 @@
+<div class="app-info row">
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Sports</h4>
+    <div class="ml-2 mt-4 text-center">
+      <div><img src="assets/images/eSPORTS.PNG" /></div>
+      <h4 class="text-primary mt-3">eSPORTS</h4>
+      <div class="fs-lg" style="color:var(--t500)"><span>Get 100% Welcome Bonus up to RM 600 in all Slots Games.</span></div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Promotions</h4>
+    <div class="ml-3 mt-4 text-center">
+      <div class="promo-title"><span>100</span></div>
+      <div class="subtitle"><h4 class="text-primary mt-3">WELCOME BONUS 100%</h4></div>
+      <div class="fs-lg" style="color:var(--t500)"><span>Get 100% Welcome Bonus up to RM 600 in all Slots Games.</span></div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Service Advantages</h4>
+    <div class="ml-3 mt-4 ">
+      <div class="row">
+        <div class="col-8">
+          <h4 class="mb-0">DEPOSIT</h4>
+          <div>Average time</div>
+        </div>
+        <div class="col-4 text-right">
+          <h1 class="mb-0">2<span class="fs-sm">Mins</span></h1>
+        </div>
+        <div class="col-12">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-8">
+          <h4 class="mb-0">WITHDRAWAL</h4>
+          <div>Average time</div>
+        </div>
+        <div class="col-4 text-right">
+          <h1 class="mb-0">15<span class="fs-sm">Mins</span></h1>
+        </div>
+        <div class="col-12">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-3 fs-sm">
+        *Average Time Reference not applicable if bank offline, connection disruption and uncompleted information provided
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Product Advantages</h4>
+
+    <app-content-pagination [contentClass]="'ml-2 mt-4'" [contentArray]="arrProductInfo" [arrayItemsPerPage]="3" [isSetTimer]="false" [interval]="7000" [timing]="'500ms ease-in'"></app-content-pagination>
+  </div>
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Info Centre</h4>
+    <div class="ml-3 mt-4">
+      <h4 class=".pointer mb-4"><a href="#">How to Instant Deposit[Help2Play] &nbsp; <i class="fas fa-arrow-right"></i></a></h4>
+      <h4 class=".pointer mb-4"><a href="#">How to Deposit &nbsp; <i class="fas fa-arrow-right"></i></a></h4>
+      <h4 class=".pointer "><a href="#">How to Withdraw &nbsp; <i class="fas fa-arrow-right"></i></a></h4>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 col-12 gradient-border mobile-border">
+    <h4 class="title">Member Service</h4>
+
+    <app-content-pagination [contentClass]="'ml-lg-4 mt-4 member-service'" [contentArray]="arrMemberService" [arrayItemsPerPage]="3" [isSetTimer]="false" [interval]="200000" [timing]="'500ms ease-in'"></app-content-pagination>
+  </div>
+
+</div>

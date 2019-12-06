@@ -1,0 +1,32 @@
+<ng-container *ngIf="slotGamesView">
+ 
+ 
+    <div class="container">
+      <!--game category dynamic--> 
+      <div class="g_category-nav nav nav-pills nav-fill ">
+
+        <ng-container *ngFor="let cat of slotGamesView.GameCategories">
+          <div class="nav-item" (click)="filterProperty=cat.FilterProperty" [ngClass]="{'active': filterProperty== cat.FilterProperty}">
+            <a class="navlink" href="javascript:void(0);"  >
+              {{cat.Name}}
+            </a>
+          </div>
+        </ng-container> 
+      </div>
+      <br />
+
+      <div class="row games no-gutters"> 
+        <ng-container *ngFor="let slotRow of slotGamesView.SlotRows">
+          <ng-container *ngFor="let game of slotRow.Slots | callback:filterSlot:filterProperty">
+            <a class="col-4 col-md-3 game-box text-center" [ngClass]="{'flex-grow-2' : game.FlexGrow =='2'}" (click)="showGameLinks($event, game);">
+              <div class="content-wrapper">
+                <img [src]="BASE_MEDIA_URL+ game.ImgSrc"> <!--/*IMAGE MIN WIDTH MUST BE 146, MAX 6 game-box per row */-->
+              </div>
+            </a> 
+          </ng-container>
+        </ng-container> 
+      </div>
+
+    </div>
+ 
+</ng-container>

@@ -1,0 +1,23 @@
+/**TODO variables*/
+@import "variables";
+.jackpot {
+  border-radius: $border-radius;
+  padding: $spacing--small; 
+  background: app-color(tertiary,base);
+  background-image: linear-gradient(135deg, #C19F55 0%, #C19F55 10%,#B28730 10%, #B28730 100%);
+  color: text-color(primary,base);
+ 
+}
+
+.title{
+  font-weight:800;
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

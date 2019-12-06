@@ -1,0 +1,25 @@
+<div class="box-body" *ngIf="game" [@slideIn]>
+  <div class="row mb-4">
+    <div class="col-3">
+      <img [src]="BASE_MEDIA_URL+ game.ImgSrc" class="img-fluid">
+    </div>
+    <div class="col-9">
+      <h4>{{game.Name}}</h4>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-4">
+        <a class="btn btn-block btn-primary--dark">
+          TRY NOW
+        </a>
+      </div>
+      <div  class="col-8">
+        <a class="btn  btn-block btn-primary">
+          PlAY NOW
+        </a>
+      </div>
+    </div>
+    </div>
+
+ </div>

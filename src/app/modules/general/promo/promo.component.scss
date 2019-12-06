@@ -1,0 +1,46 @@
+
+@import "variables";
+/*.mat-expansion-panel {
+  background: #fff;
+  color: rgba(0,0,0,.87);
+}*/
+/*.mat-expansion-panel-header-title {
+  color: var(--t700);
+}
+.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+  color: var(--t600);
+}*/
+
+.mat-expansion-panel {
+  background-color: app-color(background, light);
+}
+
+
+.promo-list {
+  margin-top: 1rem;
+
+  & .title {
+    color: text-color(background, dark);
+    font-weight: 700;
+  }
+
+  & .sub-title {
+    color: text-color(background, dark);
+  }
+
+  & .side-toggle {
+    color: text-color(secondary, base);
+    text-align: center;
+    width: 65px;
+    padding-right: 8px;
+    background-color: app-color(background, light);
+  }
+}
+
+
+:host .content {
+  height: auto !important; /*TODO */
+}
+
+
+

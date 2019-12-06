@@ -1,0 +1,23 @@
+  <ng-container *ngIf="{game$: gameStore.state$ | async, user$: userStore.user$ | async} as subs">
+     <ng-container *ngIf="subs.game$.gameView">
+       <div class="mt-3 container">
+         <ng-container *ngIf="!subs.game$.gameView.IsDisabled && subs.game$.gameView.DemoUrlSrc ; else maintenance ">
+           <app-game-frame [url]="subs.user$ && subs.game$.gameView.GameUrlSrc?subs.game$.gameView.GameUrlSrc:subs.game$.gameView.DemoUrlSrc"></app-game-frame>
+         </ng-container>
+         <ng-template #maintenance>
+           <div class="maintenance-box" >
+             <!--TODO ease in animation-->
+             <!--<h1>Maintenance</h1>
+  <div>
+      <p>We're undergoing a bit of scheduled maintenance</p>
+      <hr />
+      <p>Sorry for the inconvenience. We’ll be back up and running as fast as possible.</p>
+  </div>-->
+             <app-maintenance-sign></app-maintenance-sign>
+           </div>
+         </ng-template>
+         
+       </div>
+    
+    </ng-container>
+   </ng-container>

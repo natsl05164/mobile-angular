@@ -1,0 +1,29 @@
+@import "variables";
+:host {
+  color: text-color(background,base);
+  font-size:15px;/*TODO*/
+}
+
+
+
+/*.navbar-header {
+  background-color: var(--bg-1);
+}*/
+
+/*.navbar-nav {
+  float: none;
+}*/
+
+ 
+
+/*.collapse {
+  transition: all 0.3s ease-out;
+  display: block !important;
+  overflow: hidden !important;
+  max-height: 0;
+}
+
+.collapse.in {
+  transition: all 0.8s ease-in;
+  max-height: 3000px; any number which is lager than a height of any of your elements
+}*/

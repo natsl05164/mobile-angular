@@ -1,0 +1,25 @@
+<div class="box-body">
+  <div class="title"><h1>{{gameModalParam.Name}}</h1></div>
+
+  <div class="row  text-center" *ngFor="let row of gameModalView">
+    
+    <div class="col" *ngFor="let item of row">
+      <div>
+         <h4>Play now in your browser</h4> 
+        <a [routerLink]="item.BrowserLaunchGameRoutePath">
+          <img [src]="item.BrowserLaunchImgSrc"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center mt-4">
+    <div class="col-12">
+       <div>
+         <h4>Download Now</h4> 
+        <a  routerLink ="/games/gameAppSetPassword/{{gameModalParam.GameID}}">
+          <img [src]="appLaunchImgSrc"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

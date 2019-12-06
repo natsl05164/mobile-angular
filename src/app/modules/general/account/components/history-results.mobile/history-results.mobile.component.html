@@ -1,0 +1,136 @@
+<div *ngIf="history">
+
+  <div class="row total-data text-center">
+    <div class="col-4" *ngIf="totalBalance||totalBalance==0">
+      <div>
+        <div class="title">Total Balance</div>
+        <div>{{totalBalance}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalCredit||totalCredit==0">
+      <div>
+        <div class="title">Total Credit</div>
+        <div>{{totalCredit}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalDebit||totalDebit==0">
+      <div>
+        <div class="title">Total Debit</div>
+        <div>{{totalDebit}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalAmt||totalAmt==0">
+      <div>
+        <div class="title">Total Amount</div>
+        <div>{{totalAmt}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalBetAmt||totalBetAmt==0">
+      <div>
+        <div class="title">Total Bet Amount</div>
+        <div>{{totalBetAmt}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalTurnover||totalTurnover==0">
+      <div>
+        <div class="title">Total Turnover</div>
+        <div>{{totalTurnover}}</div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="totalWinLose||totalWinLose==0">
+      <div>
+        <div class="title">Total Win/Lose</div>
+        <div>{{totalWinLose}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class=" mat-group">
+        <input type="text" class="mat-control" (keyup)=" onKeyUp($event.target.value )" required="required" />
+        <label>Filter</label>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of depositHistory">
+
+      <div class="col-12 row-head">{{item.TransDateTime}}</div>
+      <div class="col-6  ">{{item.BankName}}</div>
+      <div class="col-6 text-right" [ngSwitch]="item.Status">
+        <ng-container *ngSwitchCase="TransactionStatus.Failed">
+          <span class="status">Failed</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="TransactionStatus.Success">
+          <span class="credit-amt">MYR {{item.Amount}}</span> <!--//TODO Currency-->
+        </ng-container>
+      </div>
+      <div class="col-6 row-footer"><small>{{item.TransID}}</small></div>
+    </div>
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of statementHistory">
+      <div class="col-12 row-head">{{item.TransDateTime}}</div>
+      <div class="col-6  ">{{item.TransType}}</div>
+      <div class="col-6 text-right" [ngSwitch]="item.Status">
+        <ng-container *ngSwitchCase="TransactionStatus.Failed">
+          <span class="status">Failed</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="TransactionStatus.Success">
+          <span [ngClass]="{'debit-amt':item.Debit>0,'credit-amt':item.Credit}">MYR {{item.Debit>0?item.Debit:item.Credit}}</span> <!--//TODO Currency-->
+        </ng-container>
+      </div>
+      <div class="col-6 row-footer"><small>{{item.TransID}}</small></div>
+    </div> 
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of transferHistory">
+
+      <div class="col-12 row-head">{{item.TransDateTime}}</div>
+      <div class="col-6  ">
+        <div>
+          <sup>To&nbsp;&nbsp;</sup>{{item.To}} &nbsp;&nbsp; <sup>From&nbsp;&nbsp;</sup>{{item.From}}
+        </div>
+      </div>
+      <div class="col-6 text-right" [ngSwitch]="item.Status">
+        <ng-container *ngSwitchCase="TransactionStatus.Failed">
+          <span class="status">Failed</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="TransactionStatus.Success">
+          <span class="credit-amt">MYR {{item.Amount}}</span> <!--//TODO Currency-->
+        </ng-container>
+      </div>
+      <div class="col-6 row-footer"><small>{{item.TransID}}</small></div>
+    </div>
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of withdrawHistory">
+
+      <div class="col-12 row-head">{{item.TransDateTime}}</div>
+      <div class="col-6  ">{{item.BankName}}</div>
+      <div class="col-6 text-right" [ngSwitch]="item.Status">
+        <ng-container *ngSwitchCase="TransactionStatus.Failed">
+          <span class="status">Failed</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="TransactionStatus.Success">
+          <span class="credit-amt">MYR {{item.Amount}}</span> <!--//TODO Currency-->
+        </ng-container>
+      </div>
+      <div class="col-6 row-footer"><small>{{item.TransID}}</small></div>
+    </div>
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of bettingHistory">
+      <div class="col-6 row-head">{{item.TransDateTime}}</div>
+      <div class="col-6 text-right"><small>Total Win/Loss</small></div>
+      <div class="col-6  ">{{item.GameCategory}}> {{item.GameSubCategory}}> {{item.GameName}}</div>
+      <div class="col-6 text-right">
+        <span [ngClass]="{'debit-amt':item.TotalWinLoss<0,'credit-amt':item.TotalWinLoss>=0}"> MYR {{item.TotalWinLoss}}</span>
+      </div>
+      <div class="col-6 row-footer"><small>{{item.TransID}}</small></div>
+    </div>
+    <div class="row h-result" (click)="openHistoryDetailsInModal($event,item);" *ngFor="let item of promotionHistory">
+      <div class="col-12 row-head">{{item.DateTime}}</div>
+      <div class="col-6  ">{{item.PromoName}}</div>
+      <div class="col-6 text-right" [ngSwitch]="item.Status">
+        <ng-container *ngSwitchCase="TransactionStatus.Failed">
+          <span class="status">Failed</span>
+        </ng-container>
+        <ng-container *ngSwitchCase="TransactionStatus.Success">
+          <span class="credit-amt">MYR {{item.Amount}}</span> <!--//TODO Currency-->
+        </ng-container>
+      </div>
+    </div>
+  </div>

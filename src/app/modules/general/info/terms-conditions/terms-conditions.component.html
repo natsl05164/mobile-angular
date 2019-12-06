@@ -1,0 +1,26 @@
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-default  ">
+  <!--<span class="menu-select" id="menu-select">General</span>-->
+  <div class="navbar-header clearfix">
+    <button class="navbar-toggler" (click)="toggleNavbar()" type="button" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="menu-select d-lg-none" id="menu-select">{{strSelectedMenu}}</div>
+  </div>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show in': navbarOpen }">
+    <ul class="navbar-nav mt-lg-0">
+      <li class="nav-item" routerLinkActive="active hidden-md">
+        <a class="nav-link" routerLink="/info/termsconditions/terms" (click)="strSelectedMenu='Terms & Conditions';">Terms & Conditions <span class="sr-only">(current)</span></a>
+      </li>
+      <!--<li class="nav-item" routerLinkActive="active hidden-md">
+        <a class="nav-link" routerLink="info/termsconditions/deposit" (click)="strSelectedMenu='Deposit';">Deposits</a>
+      </li>-->
+     
+    </ul>
+  </div>
+</nav>
+<router-outlet>
+<router-outlet>
+
+</router-outlet>

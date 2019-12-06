@@ -1,0 +1,68 @@
+
+  <div class="header-wrapper">
+    <div id="masthead" class="main-header container">
+      <div class="inner-header flex-row logo-left md-logo-center">
+        <div id="logo" class="flex-col logo">
+          <a href="#home" title="">
+            <!--TODO put site tile-->
+            <img class="img-fluid" [src]="urlSiteLogo" />
+          </a>
+        </div>
+
+        <!-- Mobile Left Elements -->
+        <div class="flex-col show-for-medium flex-left  fs-lg ">
+          <i class="icon-bars"></i>
+        </div>
+        <!-- Left Elements -->
+        <div class="flex-col hide-for-medium flex-left
+ flex-grow"></div>
+     
+        <ng-container #local="var" [var]="{isLogin: (auth != null)}">
+          <!-- Desktop Right Elements -->
+          
+          <div class="flex-col hide-for-medium flex-right">
+
+            <div class="flex-row text-right" style="justify-content: flex-end;">
+              <div class="pointer"><span>LIVE CHAT &nbsp;</span><i class="icon-chat"  ></i>  </div>
+              <!--<div class="divider"></div>--><i class="icon-kebab-vertical"></i>
+              <div [popover]="popTemplate" popoverTitle="Announcement" class="pointer"><!--<i class="fas fa-bullhorn" ></i>--><i class="icon-megaphone"></i></div>
+              <ng-template #popTemplate>Just another: {{announcement}}</ng-template>
+              <!--<div class="divider"></div>--><i class="icon-kebab-vertical"></i>
+              <!--<a class="d-block pointer"><i class="icon-mobile"></i></a>-->
+              <!--<a *ngIf="!isLogin" class="btn btn-primary" (click)="login.emit()" routerLink="#/login" routerLinkActive="link-active">Login</a>-->
+
+              <button *ngIf="!local.isLogin" type="button" class="btn btn-primary" (click)="openLoginModal();">LOGIN</button>
+              <!--<a *ngIf="!isLogin" class="btn btn-secondary" (click)="register.emit()" routerLink="#" routerLinkActive="link-active">Join</a>-->
+              <button *ngIf="!local.isLogin" type="button" class="btn btn-tertiery" routerLink="/auth/register" routerLinkActive="link-active">JOIN</button>
+              <a *ngIf="local.isLogin" class="btn btn-primary" (click)="onLogout()"  >LOGOUT</a>
+            </div>
+            <div *ngIf="local.isLogin" class="acc-panel">
+              <a href="#">Balance/Points</a>&nbsp;
+              <i class="icon-kebab-vertical"></i>&nbsp;
+              <a routerLink="/account">Fund $</a>&nbsp;
+              <i class="icon-kebab-vertical"></i>&nbsp;
+              <a  routerLink="/profile">{{auth.UserName}}</a>
+            </div>
+
+          </div>
+
+
+          <!-- MObile Right Elements -->
+          <div class="flex-col show-for-medium flex-right">
+            <div class="flex-row  text-right" style="justify-content: flex-end;">
+
+              <button *ngIf="!local.isLogin" type="button" class="btn btn-primary" (click)="openLoginModal();">LOGIN</button>
+              <!--<a *ngIf="!isLogin" class="btn btn-secondary" (click)="register.emit()" routerLink="#" routerLinkActive="link-active">Join</a>-->
+              <button *ngIf="!local.isLogin" type="button" class="btn btn-tertiery" routerLink="/auth/register" routerLinkActive="link-active">JOIN</button>
+              <a *ngIf="local.isLogin" class="btn btn-primary" (click)="onLogout()" routerLink="#" routerLinkActive="link-active">LOGOUT</a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+   
+  </div>
+
+
+
+

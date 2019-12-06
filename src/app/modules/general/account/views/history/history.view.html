@@ -1,0 +1,5 @@
+<ng-container *ngIf="{  state$: historyStore.state$ | async} as subs">
+  <app-history  (onUserAction)="historyStore.submitUserAction($event.data,$event.action)"></app-history>
+  <app-history-results [history]="subs.state$.history" [requestState]="subs.state$.requests.getTransactionHistoryByTypeDate" ></app-history-results> 
+</ng-container>
+<!--[requestState]="subs.state$.requests.getTransactionHistoryByTypeDate"--> 

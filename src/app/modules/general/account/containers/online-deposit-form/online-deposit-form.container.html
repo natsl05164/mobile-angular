@@ -1,0 +1,69 @@
+<form [formGroup]="depositForm" (ngSubmit)="onSubmitOnlineDeposit()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+
+  <div class="form-group row">
+    <label for="deposit_amount" class="col-md-4 col-form-label">Deposit Amount<span class="text-danger">*</span></label> <!--TODO currency-->
+    <div class="col-md-8">
+      <input type="money" formControlName="deposit_amount" (blur)="transformAmount($event)" class="form-control" id="deposit_amount" placeholder="" required maxlength="255">
+      <div *ngIf="deposit_amount.invalid && (isFormSubmitted||deposit_amount.dirty || deposit_amount.touched)"
+           class="invalid-feedback">
+        <div *ngIf="deposit_amount.errors.required">
+          Amount is required.
+        </div>
+        <div *ngIf="deposit_amount.errors.minAmt">
+          Amount must be more that 50.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="bank_code" class="col-md-4 col-form-label">Bank<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select type="text" formControlName="bank_code" class="form-control" id="bank_code"  >
+        <option value=null>--Please select--</option>
+        <option *ngFor="let bank of  accountView.PayTrust88BankLst" [value]=bank.BankCode>{{bank.BankName}}  </option>
+      </select>
+      <div *ngIf="bank_code.invalid && (isFormSubmitted||bank_code.dirty || bank_code.touched)"
+           class="invalid-feedback">
+        <div *ngIf="bank_code.errors.required">
+          Bank is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="promotion_id" class="col-md-4 col-form-label">Bonus</label>
+    <div class="col-md-8">
+      <select type="text" formControlName="promotion_id" [value]="promotion_id.value" class="form-control" id="promotion_id">
+        <option value=null>--Please select--</option>
+        <option value=0 *ngIf="promoInfo.IsDisableBonus">Can only run 1 bonus at a time</option>
+        <option *ngFor="let promo of promoInfo.PromotionLst" [value]=promo.id>{{promo.event_title}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group  col-md-12">
+      <div class=" form-check  ">
+        <input class="form-check-input " formControlName="IsAcceptDepositTC" type="checkbox" [checked]="IsAcceptDepositTC.value" id="defaultCheck1" required>
+
+        <label class="form-check-label" for="defaultCheck1">
+          I have read and agree to the Promotion Terms and Conditions. We do not accept the type of deposit in the form of a cheque. All types of payments in the form of checks to our account will be ignored.
+        </label>
+        <div *ngIf="IsAcceptDepositTC.invalid && (isFormSubmitted||IsAcceptDepositTC.dirty || IsAcceptDepositTC.touched)"
+             class="invalid-feedback">
+
+          <div *ngIf="IsAcceptDepositTC.errors.required">
+            Required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <button type="submit" class="btn btn-primary">Deposit</button>
+    </div>
+  </div>
+</form>

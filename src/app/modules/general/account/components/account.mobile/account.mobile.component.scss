@@ -1,0 +1,92 @@
+@import "variables";
+
+.container-box .title {
+  padding: 0.7em 1.2em;
+  background-color: color(primary,dark);
+}
+
+
+.content {
+  padding: 15px;
+}
+
+.container-wrapper {
+  background-color: color(primary,dark);
+}
+
+.container {
+  background-color: color(primary,dark);
+  top: 0;
+  position: relative;
+
+  & .head-content {
+    padding: $spacing--default 5px;
+    background-color: color(primary,dark);
+  }
+}
+
+
+
+ul.account_menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 5px;
+
+  & li {
+    float: left;
+
+    & a {
+      color: text-color(background,dark);
+      border: 1px solid text-color(background,base);
+      position: relative;
+      display: block;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      width: 94px;
+      margin: 0px 2px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+
+.btn-active {
+  color: text-color(background,dark);
+  border: 1px solid text-color(background,dark);
+  background-color: text-color(background,light);
+}
+
+.total-bal-box {
+  white-space: nowrap;
+  word-break: break-word;
+  text-align: center;
+
+  & .d-inline-block {
+    vertical-align: middle;
+  }
+}
+
+
+
+html, body, .content, .container-wrapper {
+  height: 100% !important;
+}
+
+ 
+
+.icon-wallet{
+
+  font-size:1.5em;
+}
+
+
+#total-balance {
+  color: text-color(background,dark);
+}
+
+.head-content {
+  background-color: app-color(primary,dark);
+}

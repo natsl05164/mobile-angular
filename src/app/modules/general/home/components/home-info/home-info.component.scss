@@ -1,0 +1,64 @@
+@import "variables";
+
+
+.app-info > div {
+  padding: 20px;
+  height: 280px;
+}
+
+.app-info .title {
+  color: text-color(secondary, base);
+}
+
+
+.promo-title {
+  font-size: 6rem;
+  color: text-color(secondary, base);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0px;
+  /*background: linear-gradient(to right,#3794BF 10%,#fff 50%,#3794BF 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 1.5s linear infinite;
+  display: inline-block;*/
+  display: inline-block;
+  -webkit-transform: scale(1.5,1); /* Safari and Chrome */
+  -moz-transform: scale(1.5,1); /* Firefox */
+  -ms-transform: scale(1.5,1); /* IE 9 */
+  -o-transform: scale(1.5,1); /* Opera */
+  transform: scale(1.5,1); /* W3C */
+  & span {
+    position: relative;
+  }
+
+  & span:after {
+    position: absolute;
+    top: 1.55em;
+    right: 0.45em;
+    font-size: 0.3em;
+    content: "%";
+    color: text-color(secondary, base);
+    z-index: 50;
+    /*font-family:""*/ /*TODO*/
+    display: inline-block;
+    -webkit-transform: scale(0.6,1.4); /* Safari and Chrome */
+    -moz-transform: scale(0.6,1.4); /* Firefox */
+    -ms-transform: scale(0.6,1.4); /* IE 9 */
+    -o-transform: scale(0.6,1.4); /* Opera */
+    transform: scale(0.6,1.4); /* W3C */
+  }
+}
+
+.member-service i {
+  color: text-color(primary2,base);
+}
+
+

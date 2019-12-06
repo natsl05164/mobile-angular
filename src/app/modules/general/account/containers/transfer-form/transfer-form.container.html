@@ -1,0 +1,65 @@
+<form [formGroup]="transferForm" (ngSubmit)="onSubmitTransfer()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+
+  <div class="form-group row">
+    <label for="transferFrom" class="col-md-4 col-form-label">Transfer from</label>
+    <div class="col-md-8">
+      <select type="text" formControlName="TransFrGameID" class="form-control" id="transferFrom">
+        <option value="">--Select Wallet--</option>
+        <option *ngFor="let game of gameList" value={{game.GameID}}>{{game.GameProvider}}</option>
+      </select>
+      <div *ngIf="TransFrGameID.invalid && (isFormSubmitted||TransFrGameID.dirty || TransFrGameID.touched)"
+           class="invalid-feedback">
+        <div *ngIf="TransFrGameID.errors.required">
+          Transfer From is required.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label for="transferTo" class="col-md-4 col-form-label">Transfer to</label>
+    <div class="col-md-8">
+      <select type="text" formControlName="TransToGameID" class="form-control" id="transferTo" placeholder="--Select Wallet--">
+        <option value="">--Select Wallet--</option>
+        <option *ngFor="let game of gameList" value={{game.GameID}}>{{game.GameName}}</option>
+      </select>
+      <div *ngIf="TransToGameID.invalid && (isFormSubmitted||TransToGameID.dirty || TransToGameID.touched)"
+           class="invalid-feedback">
+        <div *ngIf="TransToGameID.errors.required">
+          Transfer TO is required.
+        </div>
+        <div *ngIf="TransToGameID.errors.transferToSame">
+          Transfer To the game cannot be same as game Transfer From .
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="TransAmount" class="col-md-4 col-form-label">Amount</label>
+    <div class="col-md-8">
+      <input type="money" formControlName="TransAmount" (blur)="transformAmount($event)" class="form-control" id="TransAmount" placeholder="" required maxlength="255">
+      <div *ngIf="TransAmount.invalid && (isFormSubmitted||TransAmount.dirty || TransAmount.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="TransAmount.errors.required">
+          Amount is required.
+        </div>
+        <div *ngIf="TransAmount.errors.pattern">
+          Amount value is incorrect.
+        </div>
+        <div *ngIf="TransAmount.errors.minAmt">
+          Amount must be more than 0
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

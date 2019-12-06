@@ -1,0 +1,63 @@
+@import "variables";
+div.games {
+  /*padding: 0px 6px;*/
+  &.flex-row {
+    justify-content: flex-start !important;
+  }
+   
+}
+
+.game-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  //padding-bottom: 33.3333%;
+  /*width: 28.8vmin;
+  height: 28.8vmin;
+  margin: 0 2.13333vmin 2.66667vmin 2.13333vmin;*/
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &:after { //square it
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  & .content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    overflow: auto;
+  }
+
+  & img {
+    border-radius: 1.33333vmin;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+}
+
+
+
+.g_category-nav {
+  & .nav-item {
+    padding: 5px;
+    display: inline-block;
+    border: 2px solid app-color(primary,dark);
+    margin-right: 3px;
+    border-radius: $border-radius-sm;
+
+    &.active, &.active a {
+      background-color: app-color(primary,dark);
+      color: text-color(primary,base);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import 'variables';
+
+.box-body {
+  padding: 15px;
+  background: app-color(primary,dark);
+}
+ 
+
+.ce-modal__backdrop {
+  /*padding-top: $ce-modal__spacing--vertical * 1vm; //IE support*/
+  /*padding-top: 25 * 1vh !important;*/
+ 
+}

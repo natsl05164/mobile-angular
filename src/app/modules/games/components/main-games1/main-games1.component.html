@@ -1,0 +1,48 @@
+<!--slots-->
+<!--<div class="container wrapper">
+  <div class="row">
+
+    <div class="col-12 col-sm-6" *ngFor="let game of gamesView.Games">
+
+      <a routerLink="">
+        <div class="overlay-wrapper  ">
+          <div class="overlay-hvrshade">
+          </div>
+          <div class="overlay-name">
+            <h4>{{game.Name}}</h4>
+            <div>
+              <div class="powerby">
+                <div class="fs-xs">Powered by</div>
+                <div>{{game.Description}}</div>
+              </div>
+              <button class="btn btn-tertiery btn-hvrplay" routerLink="">Enter</button>
+            </div>
+          </div>
+          <img [src]="BASE_MEDIA_URL + game.ImgSrc " class="img-fluid" />
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</div>-->
+<!--<button (click)="trigerAlert()">Heelow</button>-->
+<div class="container wrapper">
+  <div class="row">
+    <div class="col-12 col-sm-6 box" *ngFor="let game of gamesView.Games">
+      <a [routerLink]="['/games/slots',game.ID] ">
+        <div class="flip  ">
+          <div class="front" [style.background-image]="'url('+ BASE_MEDIA_URL + game.ImgSrc +')'">
+            <h1 class="title">{{game.Name}}</h1>
+      
+          </div>
+          <div class="back">
+            <h2  class="title">{{game.Name}}</h2>
+            <p>{{game.Description}}</p>
+            <div class=" text-right"><button class="btn btn-tertiery btn-hvrplay" [routerLink]="['/games/slots',game.ID] "> Enter </button></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

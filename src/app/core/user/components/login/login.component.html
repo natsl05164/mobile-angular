@@ -1,0 +1,124 @@
+
+
+
+<div class="modal-header text-center">
+
+  <div style="width:100%;transform: translateX(22px);">
+    <h4 class="modal-title">{{title}}</h4>
+    <div class="fs-lg"><span>{{subtitle}}</span></div>
+  </div>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" *ngIf="isForLogin">
+  <form name="loginForm" [formGroup]="loginForm" [ngClass]="{'needs-validation was-validated':isSubmit,'needs-validation':!isSubmit }" (ngSubmit)="onLogIn()">
+
+    <!--<div class="form-group">
+    <label for="email" class="fs-lg">Email address</label>
+    <div class="input-group">
+      <div class="input-group-prepend input-icon ">
+        <span class="input-group-text text-t500" id="basic-addon1"><i class="fas fa-user-alt"></i></span>
+      </div>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" required="required" id="email" aria-describedby="emailHelp" placeholder="">
+
+    </div>
+  </div>-->
+    <div class="form-group ">
+      <label for="password" class="fs-lg">User Name</label>
+      <div class="icon-input">
+        <input type="text" class="form-control input-l" name="UserName" required="required" formControlName="UserName" id="userName" aria-describedby="emailHelp" placeholder="">
+        <i class="icon-user"></i>
+        <div class="invalid-feedback" *ngIf="userName.invalid && (userName.dirty || userName.touched || isSubmit)">
+          <span *ngIf="userName.errors.required">
+            Please enter your User Name
+          </span>
+          <span *ngIf="userName.errors.maxlength">
+            Please enter a User Name no more than 250 characters.
+          </span>
+          <span *ngIf="userName.errors.email">
+            Please enter a valid User Name .
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group ">
+      <label for="password" class="fs-lg">Password</label>
+      <div class="icon-input">
+        <input type="password" class="form-control  input-l" formControlName="Password" name="Password" required="required" />
+        <i class="icon-lock-closed"></i>
+        <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched || isSubmit)">
+          <span *ngIf="password.errors.required">
+            Please enter a password
+          </span>
+          <span *ngIf="password.errors.maxlength">
+            Please enter a password no more than 16 characters.
+          </span>
+          <span *ngIf="password.errors.minlength">
+            Please enter a password at least 6 characters.
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+
+ 
+    <div class="alert " [ngClass]="{'alert-success': isSuccess, 'alert-danger':!isSuccess  }" *ngIf="message">
+      <b> {{message}} </b>
+    </div>
+
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-block btn-primary fs-lg">Login</button>
+      <button (click)="openForgotPwdModal($event);" class="btn" id="forgotPwd-btn">
+        Forgot Password?<i class="fas fa-redo"></i>
+      </button>
+      <!-- <a [routerLink]="['/forgot-password']" routerLinkActive="link-active" class="login wt70p forgotpassword txt_cen">Forgot
+    Password</a> -->
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-body" *ngIf="!isForLogin">
+  <form #resetForm="ngForm" name="resetPwdForm" (ngSubmit)="onReset()">
+
+    <!--<div class="form-group">
+    <label for="email" class="fs-lg">Email address</label>
+    <div class="input-group">
+      <div class="input-group-prepend input-icon ">
+        <span class="input-group-text text-t500" id="basic-addon1"><i class="fas fa-user-alt"></i></span>
+      </div>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" required="required" id="email" aria-describedby="emailHelp" placeholder="">
+
+    </div>
+  </div>-->
+    <div class="form-group ">
+      <label for="password" class="fs-lg">Email address</label>
+      <div class="icon-input">
+        <input type="email" class="form-control input-l" [(ngModel)]="forgotPwdEmail" name="email" required="required" id="email" aria-describedby="emailHelp" placeholder="">
+        <i class="fas fa-user-alt"></i>
+      </div>
+    </div>
+
+
+    <div class="alert " [ngClass]="{'alert-success': isSuccess, 'alert-danger':!isSuccess  }" *ngIf="message">
+      <b> {{message}} </b>
+    </div>
+
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-block btn-primary fs-lg" (click)="onReset();">Reset</button>
+      <!-- <a [routerLink]="['/forgot-password']" routerLinkActive="link-active" class="login wt70p forgotpassword txt_cen">Forgot
+    Password</a> -->
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer text-center">
+  <!--<button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>-->
+  <div>Not registered? <a  routerLink="/auth/register"  class="text-primary" (click)="onClickSignUp()">Sign up</a></div>
+</div>
+
+

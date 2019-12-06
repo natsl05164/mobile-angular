@@ -1,0 +1,38 @@
+<form name="appSetPwdForm" [formGroup]="appSetPwdForm" [ngClass]="{'needs-validation was-validated':isSubmit,'needs-validation':!isSubmit }" (ngSubmit)="onSubmit()">
+
+  <!--<div class="form-group ">
+    <label for="password" class="fs-lg">User Name</label>
+    <div class="icon-input">
+      <input type="text" class="form-control input-l" name="UserName" required="required" formControlName="UserName" id="UserName" aria-describedby="userNameHelp"  disabled>
+      <i class="icon-user"></i>
+    </div>
+  </div>-->
+  <div class="form-group ">
+    <label for="password" class="fs-lg">Create/Change App Password</label>
+    <div class="icon-input">
+      <input type="password" class="form-control  input-l" formControlName="Password" name="Password" required="required" />
+      <i class="icon-lock-closed"></i>
+      <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched || isSubmit)">
+        <span *ngIf="password.errors.required">
+          Please enter a password
+        </span>
+        <span *ngIf="password.errors.maxlength">
+          Please enter a password no more than 16 characters.
+        </span>
+        <span *ngIf="password.errors.minlength">
+          Please enter a password at least 6 characters.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group "> 
+      <input type="hidden" class="form-control  input-l" formControlName="GameID" name="GameID" required="required" /> 
+  </div>
+   
+
+  <div class="text-center">n
+
+    <button type="submit" class="btn btn-block btn-primary fs-lg">Submit</button>
+  </div>
+
+</form>

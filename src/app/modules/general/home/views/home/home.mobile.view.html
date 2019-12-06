@@ -1,0 +1,20 @@
+<!--Shared-->
+<app-main-carousel [slides]="slides"></app-main-carousel>
+<app-site-ann [announcement]="announcement" [isError]="isAnnJPError"  ></app-site-ann>
+<div class="mobile-border"></div>
+
+<ng-container *ngIf="{user$: userStore.user$ | async} as subs">
+
+  <ng-container *ngIf="!subs.user$">
+    <app-login-buttons></app-login-buttons>
+  </ng-container>
+
+</ng-container>
+<div class="mobile-border"></div>
+<app-shortcut-links></app-shortcut-links>
+<div class="mobile-border"></div>
+<div class="app-wrapper container mt-2">
+  <app-new-games [newGames]="newGames"></app-new-games>
+  <app-home-info [socialHandles]="appSettings.websiteData.SocialHandles"></app-home-info>
+  <div class="mobile-border"></div>
+</div>

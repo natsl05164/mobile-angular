@@ -1,0 +1,270 @@
+@import "./pallete";
+@import "mixins";
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$google-font-family: "Ropa+Sans&display=swap";
+@font-face {
+  font-family: 'DINPro-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DINPro-Regular'), url('/assets/fonts/DINPro-Regular_13937.woff') format('woff');
+}
+
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #C70022;
+$lightRed: #ff0000;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+$pale-aqua: #BFDBF7;
+
+ 
+
+
+$footer-bg: app-color(background,pale);
+/*$overlay-rgb: 31, 45, 61;*/
+$overlay: color-opacity(primary,light,'light');
+
+
+$gradient-21: app-color(tertiery,light);
+$gradient-22: app-color(tertiery,base);
+
+
+$mat-control-highlight: app-color(tertiery,light);
+
+/*$theme-colors: ( "tertiery" : app-color(tertiery,base) );*/
+$primary: app-color(primary,base); 
+$secondary: app-color(background,base);
+$tertiery: app-color(tertiery,base); 
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$success: $green !default;
+
+$extra-text-colors: ( "t500" : text-color(primary2,light),"t600" :text-color(primary2,dark), "primary-2" : text-color(secondary,light)); 
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:      8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold:  150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: text-color(primary2,dark) !default;
+$yiq-text-light: text-color(primary,light) !default;
+
+$spacing--default:15px;
+$spacing--small:10px;
+$spacing--smaller: 5px;
+$z-index--modal:1000; 
+$top-bar-mobile-z-index: 999;
+$floats-mobile-z-index: 888;
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret:                                true !default;
+$enable-rounded:                              true !default;
+$enable-shadows:                              false !default;
+$enable-gradients:                            false !default;
+$enable-transitions:                          true !default;
+$enable-prefers-reduced-motion-media-query:   true !default;
+$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes:                         true !default;
+$enable-pointer-cursor-for-buttons:           true !default;
+$enable-print-styles:                         true !default;
+$enable-responsive-font-sizes:                false !default;
+$enable-validation-icons:                     true !default;
+$enable-deprecation-messages:                 true !default;
+
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+//Bootstrap additional Spacing -to add before load bootstrap
+$spacer: 1rem;
+$spacers: ( 6: ($spacer * 5), 7: ($spacer * 10), 8: ($spacer * 15), 9: ($spacer * 20) );
+
+ 
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: app-color(foreground,base);
+$body-bg-sm: app-color(primary,darker);
+$body-color: text-color(primary2,base); //text-body
+$body-color-sm: text-color(primary,base); //text-body
+
+
+$side-nav-bg--sm: app-color(primary,darker);
+$top-bar-bg--sm: app-color(primary,darker);
+$side-nav-inner-bg--sm: app-color(primary,dark);
+$right-side-bg--sm: app-color(primary,dark);
+// Links
+//
+// Style anchor elements.
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom:   1rem !default;
+
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+ //by min width
+$grid-breakpoints: ( xs: 0, sm: 600px, md: 660px, lg: 992px, xl: 1340px );
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: ( sm: 600px, md: 991px, lg: 1020px, xl: 960px );
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           30px !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:              1.5 !default;
+$line-height-sm:              1.5 !default;
+
+$border-width:                1px !default;
+$border-color: color(background,dark);
+$border-color--contrast-primary: app-color(primary,light);
+
+$border-radius:               0 ;
+$border-radius-lg:            0 ;
+$border-radius-sm:            5px ;
+ 
+
+$rounded-pill:                50rem !default;
+
+$box-shadow-sm:               0 .125rem .25rem rgba(black, .075) !default;
+$box-shadow:                  0 .5rem 1rem rgba(black, .15) !default;
+$box-shadow-lg:               0 1rem 3rem rgba(black, .175) !default;
+
+$component-active-color:      white !default;
+/*$component-active-bg:         theme-color("primary") !default;*/
+
+$caret-width:                 .3em !default;
+$caret-vertical-align:        $caret-width * .85 !default;
+$caret-spacing:               $caret-width * .85 !default;
+
+$transition-base:             all .2s ease-in-out !default;
+$transition-fade:             opacity .15s linear !default;
+$transition-collapse:         height .35s ease !default;
+
+$embed-responsive-aspect-ratios: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$embed-responsive-aspect-ratios: join(
+  (
+    (21 9),
+    (16 9),
+    (4 3),
+    (1 1),
+  ),
+  $embed-responsive-aspect-ratios
+);
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      DINPro-Regular,Tahoma,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif;
+// stylelint-enable value-keyword-case
+
+$font-size-base:              0.875rem;
+$font-size-xxl:               $font-size-base * 2  ;
+$font-size-xl:                $font-size-base * 1.6 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-md:                $font-size-base * .9;
+$font-size-sm:                $font-size-base * .8 ;
+$font-size-xs:                $font-size-base * .64 ;
+$font-size-xxs:               $font-size-base * .512;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
+
+$h1-font-size:                $font-size-base * 3.052;
+$h2-font-size:                $font-size-base * 2.441;
+$h3-font-size:                $font-size-base * 1.953;
+$h4-font-size:                $font-size-base * 1.563;
+$h4-font-size--sm:            $font-size-base * 1.125;
+$h5-font-size:                $font-size-base * 1.25;
+$h5-font-size--sm:                $font-size-base * 0.75;
+$h6-font-size:                $font-size-base !default;
+
+$headings-margin-bottom:      $spacer / 2 !default;
+$headings-font-family:        DINPro-Regular, sans-serif, 'PT Sans';/*null !default;*/
+$headings-font-weight:        100 ;
+$headings-line-height:        1.2 !default;
+$headings-color:              null !default;
+
+$display1-size:               6rem !default;
+$display2-size:               5.5rem !default;
+$display3-size:               4.5rem !default;
+$display4-size:               3.5rem !default;
+
+$display1-weight:             300 !default;
+$display2-weight:             300 !default;
+$display3-weight:             300 !default;
+$display4-weight:             300 !default;
+$display-line-height:         $headings-line-height !default;
+
+$lead-font-size:              $font-size-base * 1.25 !default;
+$lead-font-weight:            300 !default;
+
+$small-font-size:             80% !default;
+
+$text-muted:                  text-color(primary2,light) !default;
+
+$blockquote-small-color:      text-color(primary2,light) !default;
+$blockquote-small-font-size:  $small-font-size !default;
+$blockquote-font-size:        $font-size-base * 1.25 !default;
+
+$hr-border-color:             rgba(black, .1) !default;
+$hr-border-width:             $border-width !default;
+
+$mark-padding:                .2em !default;
+
+$dt-font-weight:              $font-weight-bold !default;
+
+$kbd-box-shadow:              inset 0 -.1rem 0 rgba(black, .25) !default;
+$nested-kbd-font-weight:      $font-weight-bold !default;
+
+$list-inline-padding:         .5rem !default;
+
+$mark-bg:                     #fcf8e3 !default;
+
+$hr-margin-y:                 $spacer !default;

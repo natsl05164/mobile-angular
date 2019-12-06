@@ -1,0 +1,6 @@
+<ng-container *ngIf="{balanceState$: balanceStore.state$ | async, accViewState$: accountStore.state$ | async} as subs">
+  <app-withdrawal [requestState]="subs.balanceState$.requests.transfer" [allBalance]="subs.balanceState$.allBalanceList"  (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)">
+    <app-withdraw-form [accountView]="subs.accViewState$.accountView" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)"></app-withdraw-form>
+  </app-withdrawal>
+</ng-container>
+

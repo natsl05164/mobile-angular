@@ -1,0 +1,172 @@
+:host {
+  display: block;
+  overflow: hidden; /* Hide everything that doesn't fit compoennt */
+}
+
+.content-wrapper {
+  min-height: 168px;
+  position: relative;
+  width: 200%;
+  display: flex;
+  height:100%;
+  
+}
+
+.content-box {
+  /*position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;*/
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.content-inner {
+  /*width: 100%;*/
+}
+
+  .content-item {
+   
+  }
+
+  [class^="c_"] {
+    background: url(/assets/images/misc/cd.white.png) no-repeat top left;
+    display: inline-block;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    z-index: 1000;
+  }
+
+  .c_1 {
+    background-position: 0px 0px;
+  }
+
+  .c_2 {
+    background-position: -18px 0px;
+  }
+
+  .c_3 {
+    background-position: -36px 0px;
+  }
+
+  .c_4 {
+    background-position: -54px 0px;
+  }
+
+  .c_5 {
+    background-position: -72px 0px;
+  }
+
+  .c_6 {
+    background-position: -90px 0px;
+  }
+
+  .c_7 {
+    background-position: -108px 0px;
+  }
+
+  .c_8 {
+    background-position: -126px 0px;
+  }
+
+  .c_9 {
+    background-position: 0px -18px;
+  }
+
+  .c_10 {
+    background-position: -18px -18px;
+  }
+
+  .c_11 {
+    background-position: -36px -18px;
+  }
+
+  .c_12 {
+    background-position: -54px -18px;
+  }
+
+  .c_13 {
+    background-position: -72px -18px;
+  }
+
+  .c_14 {
+    background-position: -90px -18px;
+  }
+
+  .c_15 {
+    background-position: -108px -18px;
+  }
+
+  .c_16 {
+    background-position: -126px -18px;
+  }
+
+  .c_17 {
+    background-position: 0px -36px;
+  }
+
+  .c_18 {
+    background-position: -18px -36px;
+  }
+
+  .c_19 {
+    background-position: -36px -36px;
+  }
+
+  .c_20 {
+    background-position: -54px -36px;
+  }
+
+  .c_21 {
+    background-position: -72px -36px;
+  }
+
+  .c_22 {
+    background-position: -90px -36px;
+  }
+
+  .c_23 {
+    background-position: -108px -36px;
+  }
+
+  .c_24 {
+    background-position: -126px -36px;
+  }
+
+  .c_25 {
+    background-position: 0px -54px;
+  }
+
+  .c_26 {
+    background-position: -18px -54px;
+  }
+
+  .c_27 {
+    background-position: -36px -54px;
+  }
+
+  .c_28 {
+    background-position: -54px -54px;
+  }
+
+  .c_29 {
+    background-position: -72px -54px;
+  }
+
+  .c_30 {
+    background-position: -90px -54px;
+  }
+
+  .c_31 {
+    background-position: -108px -54px;
+  }
+
+  .c_32 {
+    background-position: -126px -54px;
+  }
+
+

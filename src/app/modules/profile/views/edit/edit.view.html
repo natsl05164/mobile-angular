@@ -1,0 +1,8 @@
+<div class="container">
+  <ng-container *ngIf="{usereState$: userStore.state$ | async} as subs">
+    <app-edit *ngIf="subs.usereState$.user"  [domain]="domain" [userInfo]="subs.usereState$.user" (onUserAction)="onUserAction($event)"></app-edit>
+  </ng-container>
+  <ng-template #loading>
+    <my-spinner></my-spinner>
+  </ng-template>
+</div>

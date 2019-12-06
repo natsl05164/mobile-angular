@@ -1,0 +1,76 @@
+<div class="panel-group">
+  <mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'49px'" [expandedHeight]="'49px'">
+        <mat-panel-title>
+          <h5 class="panel-title">1. How to do a fund withdrawal from {{websiteData.WebTitle}} account?</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <p>
+          Fund withdrawal can be transferred to your account via debit card or bank transfer.
+        </p>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'49px'" [expandedHeight]="'49px'">
+        <mat-panel-title>
+          <h5 class="panel-title">2. Any requirement for bank account that I use for withdrawal transaction?</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <p>
+          It is important to note that the payee name entered for withdrawal must be same with account name listed in {{websiteData.WebTitle}}. Please note that {{websiteData.WebTitle}} has a right to refuse any kind of transaction conducted by a third party name and withdrawal request that do not meet the stated policy will be rejected promptly.
+        </p>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'49px'" [expandedHeight]="'49px'">
+        <mat-panel-title>
+          <h5 class="panel-title">3. What currencies are acceptable by {{websiteData.WebTitle}}?</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <p>
+          {{websiteData.WebTitle}}  currently only accept {{websiteData.CurrenyCode}} ->  {{websiteData.CurrenyName}} for transactions.
+        </p>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'49px'" [expandedHeight]="'49px'">
+        <mat-panel-title>
+          <h5 class="panel-title">4. How long does it take to process the withdrawal transaction?</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <p>
+          Withdrawal transaction will be processed within 5 (five) minutes, however processing may take longer over the weekends/bank offline/bank holidays or if the account verification is needed for some cases.
+        </p>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [collapsedHeight]="'49px'" [expandedHeight]="'49px'">
+        <mat-panel-title>
+          <h5 class="panel-title">4. How to withdraw?</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="panel-body">
+        <ol>
+          <li>Please login to {{websiteData.WebTitle}} website and select "Transaction > Withdraw" on menu bar.</li>
+          <li>Fill the withdraw amount without any dot/comma symbol. Ex: 1000 (one thousand ringgit).</li>
+          <li>Choose the withdrawal bank type and select the bank option.</li>
+          <li>Withdraw form must be filled using valid/correct data (full name, bank account no, bank name, etc).</li>
+          <li>Select "Submit" and please be waited while your withdrawal is being processed.</li>
+          <br>
+        </ol>
+        <p>
+          <strong>
+            Please note that any withdrawal transaction (in/out of promotion) should be adjusted to predetermined policies. {{websiteData.WebTitle}} has a right to refuse any kind of transaction if it does not comply with the policy. For further information please contact our customer service representative (online 24 hours).
+          </strong>
+        </p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

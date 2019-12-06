@@ -1,0 +1,43 @@
+ 
+    <div class="container" >
+      <div class="row">
+
+        <div class="col-md-4 d-none d-md-block">
+          <!--TODO MOBILE show as pop up-->
+          <div class="promo-box">
+            <div class="text-center text-primary"><h4>MEMBER BENEFITS!</h4></div>
+            <ul *ngFor="let item of lstMemberBenefits" class="fs-md">
+              <li>
+                <div class="title" [innerHTML]="item.Title | safe :'html'"></div>
+                <div *ngFor="let detail of item.Details" class="pt-2">
+                  <span>{{detail}}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ng-template #popMemberBenefits>
+          <div class="promo-box">
+            <div class="text-center text-primary"><h4>MEMBER BENEFITS!</h4></div>
+            <ul *ngFor="let item of lstMemberBenefits" class="fs-md">
+              <li>
+                <div class="title" [innerHTML]="item.Title | safe :'html'"></div>
+                <div *ngFor="let detail of item.Details" class="pt-2">
+                  <span>{{detail}}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+        <div class="col-md-7 ">
+          <h3 class="float-left">Create Account</h3>&nbsp; <div class="float-left ml-2 d-block d-md-none">  <sup class="sup" [popover]="popMemberBenefits">Member Benefits <i class="fas fa-question-circle"></i></sup> </div>
+
+          <hr />
+          <ng-content select="app-register-form"></ng-content>
+        </div>
+
+      </div>
+
+    </div>
+
+ 

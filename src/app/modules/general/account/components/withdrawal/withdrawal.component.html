@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="title"><h6>&nbsp;</h6></div>
+    <ng-content class="app-withdraw-form"></ng-content>
+  </div>
+  <div class="col-md-8 curr-bal">
+
+    <div class="title"><h6>CURRENT BALANCE   &nbsp; &nbsp; &nbsp;<a href="javascript:void(0);" (click)="refreshGameBalance()"><i class=" icon-refresh"></i></a></h6></div>
+    <ng-container *ngIf="!requestState.inProgress; else loading"> <!--TODO add if error -->
+      <div class="form-group row">
+        <label for="FailedTrans" class="col-md-4 col-form-label">Failed Transfer</label>
+        <div class="col-9  col-md-6">
+          <input type="text" disabled name="FailedTrans" class="form-control" value="{{allBalance.FailedAmt}}" id="FailedTrans" placeholder="0">
+        </div>
+        <div class="col-3 col-md-2  noSidePadding">
+          <button class="btn btn-primary mr-1" (click)="onTransferToMainWallet(gameBal.GameID,gameBal.Balance)">Release</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="MainWallet" class="col-md-4 col-form-label">Main Wallet</label>
+        <div class="col-md-8">
+          <input type="text" disabled name="MainWallet" class="form-control" id="MainWallet" value="{{allBalance.WalletAmt}}" placeholder="0">
+        </div>
+      </div>
+
+      <div class="form-group row" *ngFor="let gameBal of allBalance.GameBalList ">
+        <label for="MainWallet" class="col-md-4 col-form-label">{{gameBal.GameProvider}}</label>
+        <div class="col-9 col-md-6">
+          <input type="text" disabled name="MainWallet" value="{{gameBal.Balance}}" class="form-control" id="{{gameBal.GameProviderID}}" placeholder="0">
+        </div>
+        <div class="col-3 col-md-2 noSidePadding">
+          <button class="btn btn-primary mr-1" (click)="onTransferToMainWallet(gameBal.GameID,gameBal.Balance)"><i class="icon-circle-up"></i></button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <!--*ngIf="requestState.inProgress" TODO-->
+      <my-spinner></my-spinner>
+    </ng-template>
+
+  </div>
+</div>

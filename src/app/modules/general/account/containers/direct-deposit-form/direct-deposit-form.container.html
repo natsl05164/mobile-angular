@@ -1,0 +1,151 @@
+<form [formGroup]="depositForm" (ngSubmit)="onSubmitDeposit()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+
+  <div class="form-group row">
+    <label for="bank_id" class="col-md-4 col-form-label">Bank<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select type="text" formControlName="bank_id" class="form-control" id="bank_id" (change)="onChangeSiteBank();">
+        <option value=null>--Please select--</option>
+        <option *ngFor="let bank of  accountView.SiteBankList" [value]=bank.BankID>{{bank.BankName}}  </option>
+      </select>
+      <div *ngIf="bank_id.invalid && (isFormSubmitted||bank_id.dirty || bank_id.touched)"
+           class="invalid-feedback">
+        <div *ngIf="bank_id.errors.required">
+          Bank is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="bank_id.value">
+    <div class="col-md-4"></div>
+    <div class="col-12 col-md-8 ">
+      <div class="bankInfo-box  row">
+        <div class="col-md-4 col-12">
+          <!--TODO payment method-->
+          <img *ngIf="bank_id.value==1" class="img-responsive" src="images/1561699448.png" width="80%" height="50%">
+          <img *ngIf="bank_id.value==2" class="img-responsive" src="images/1561699448.png" width="80%" height="50%">
+        </div>
+        <div class="col-md-10 col-12">
+          <dl class="dl-horizontal">
+            <dt>Bank Account Name </dt>
+            <dd>: {{strAccHolderName}}</dd>
+            <dt>Bank Account No  </dt>
+            <dd>: {{strSiteAccountNo}}</dd>
+            <dt>Min Deposit  </dt>
+            <dd>: MYR 30.00</dd> <!--TODO site settings??-->
+            <dt>Max Deposit  </dt>
+            <dd>: MYR 30,000.00</dd>  <!--TODO site settings??-->
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label for="deposit_amount" class="col-md-4 col-form-label">Deposit Amount<span class="text-danger">*</span></label> <!--TODO currency-->
+    <div class="col-md-8">
+      <input type="money" formControlName="deposit_amount" (blur)="transformAmount($event)" class="form-control" id="deposit_amount" placeholder="" required maxlength="255">
+      <div *ngIf="deposit_amount.invalid && (isFormSubmitted||deposit_amount.dirty || deposit_amount.touched)"
+           class="invalid-feedback">
+        <div *ngIf="deposit_amount.errors.required">
+          Amount is required.
+        </div>
+        <div *ngIf="deposit_amount.errors.minAmt">
+          Amount must be more that 50.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-content select="[container-shortcut-amount-buttons]"></ng-content>
+  <div class="form-group row">
+    <label for="deposit_method" class="col-md-4 col-form-label">Deposit Method<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select type="text" formControlName="deposit_method" class="form-control" id="deposit_method">
+        <option value=null>--Please select--</option>
+        <option [value]=1>ATM Cash Deposit</option>
+        <option [value]=2>Cash Deposit</option>
+        <option [value]=3>Internet Banking</option>
+        <option [value]=4>Mobile Banking</option>
+      </select>
+      <div *ngIf="deposit_method.invalid && (isFormSubmitted||deposit_method.dirty || deposit_method.touched)"
+           class="invalid-feedback">
+        <div *ngIf="deposit_method.errors.required">
+          Deposit Method is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="promotion_id" class="col-md-4 col-form-label">Bonus</label>
+    <div class="col-md-8">
+      <select type="text" formControlName="promotion_id" [value]="promotion_id.value" class="form-control" id="promotion_id">
+        <option value=null>--Please select--</option>
+        <option value=0 *ngIf="promoInfo.IsDisableBonus">Can only run 1 bonus at a time</option>
+        <option *ngFor="let promo of promoInfo.PromotionLst" [value]=promo.id>{{promo.event_title}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="ref_no" class="col-md-4 col-form-label">Reference number</label>
+    <div class="col-md-8">
+      <input type="money" formControlName="ref_no" class="form-control" id="ref_no" placeholder="" required maxlength="255">
+      <div *ngIf="ref_no.invalid && (isFormSubmitted||ref_no.dirty || ref_no.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="ref_no.errors.required">
+          Reference number is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="receipt" class="col-md-4 col-form-label">Transfer receipt</label>
+    <app-file-upload formControlName="receipt"  id="receipt" class="col-md-8"></app-file-upload>
+    <!--<div class="invalid-feedback" style="display: block">
+      <ng-container *ngIf="hasError('image', 'required')">This field is required</ng-container>
+      <ng-container *ngIf="hasError('image', 'requiredFileType')">Only PNG 🤡</ng-container>
+    </div>-->
+    <div *ngIf="receipt.invalid && (isFormSubmitted||receipt.dirty || receipt.touched)"
+         class="invalid-feedback">
+
+      <div *ngIf="receipt.errors.required">
+        Receipt is required.
+      </div>
+      <div *ngIf="receipt.errors.requiredFileType">
+        Only PNG 🤡
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group  col-md-12">
+      <div class=" form-check  ">
+        <input class="form-check-input " formControlName="IsAcceptDepositTC" type="checkbox" [checked]="IsAcceptDepositTC.value" id="defaultCheck1" required>
+
+        <label class="form-check-label" for="defaultCheck1">
+          I have read and agree to the Promotion Terms and Conditions. We do not accept the type of deposit in the form of a cheque. All types of payments in the form of checks to our account will be ignored.
+        </label>
+        <div *ngIf="IsAcceptDepositTC.invalid && (isFormSubmitted||IsAcceptDepositTC.dirty || IsAcceptDepositTC.touched)"
+             class="invalid-feedback">
+
+          <div *ngIf="IsAcceptDepositTC.errors.required">
+            Required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <button type="submit" class="btn btn-primary">Deposit</button>
+    </div>
+  </div>
+</form>

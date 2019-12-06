@@ -1,0 +1,34 @@
+<!-- The Modal -->
+<div id="myModal" class="modal" *ngIf="modalStatus">
+  <!-- Modal content -->
+  <div class="modal-content" [@dialog]>
+    <div class="header" [ngClass]="{'danger':type=='danger','info':type=='info','success':type=='success','warning':type=='warning'}">
+      <!--[style.background-color]="backColor"-->
+      <h3>{{title}}</h3>
+      <span class="close" (click)="resolve()">×</span>
+    </div>
+    <div class="body">
+      <div class="ico-alert" [ngClass]="{'danger':type=='danger','info':type=='info','success':type=='success','warning':type=='warning'}">
+
+        <i class="icon-cancel" *ngIf="type=='danger'"></i>
+        <i class="icon-checkmark" *ngIf="type=='success'"></i>
+        <i class="icon-info" *ngIf="type=='info'"></i>
+        <i class="icon-notice" *ngIf="type=='warning'"></i>
+      </div>
+      <div>
+        <p class="alert-msg" [innerHtml]="message">
+
+        </p>
+        <p class="alert-detail" [innerHtml]="details">
+
+        </p>
+      </div>
+      
+      <hr>
+    </div>
+    <div class="footer"> 
+      <button class="btn btn-default" (click)="resolve()" [ngClass]="{'btn-danger':type=='danger','btn-info':type=='info','btn-success':type=='success','btn-warning':type=='warning'}">OK</button>
+    </div>
+    </div>
+ 
+</div>

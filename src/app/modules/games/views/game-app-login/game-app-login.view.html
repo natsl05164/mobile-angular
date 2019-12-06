@@ -1,0 +1,17 @@
+<ng-container *ngIf="{gameApp$: gameAppLoginStore.state$ | async} as subs">
+  <ng-container *ngIf="subs.gameApp$.gameAppLoginDetails">
+
+    <h1>{{subs.gameApp$.gameAppLoginDetails.GameName}}</h1>
+    <p>Please set password for the mobile game app (see <a href="#guide">steps</a>)</p>
+    <app-game-app-login-details [appLoginDetails]="subs.gameApp$.gameAppLoginDetails"> </app-game-app-login-details>
+    <app-game-app-set-pwd-form [gameID]="gameID"></app-game-app-set-pwd-form>
+
+    <div id="guide">
+      <app-game-app-guide [gamePrefix]="subs.gameApp$.gameAppLoginDetails.GamePrefix"></app-game-app-guide>
+    </div>
+  </ng-container>
+
+  
+</ng-container>
+
+

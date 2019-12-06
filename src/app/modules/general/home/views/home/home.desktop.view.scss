@@ -1,0 +1,14 @@
+
+@import "variables";
+/*@keyframes textclip {
+  to {
+    background-position: 200% center
+  }
+}*/
+
+.fixed-bottom-left {
+  position: fixed;
+  bottom: 20%;
+  left: 0;
+  z-index: $floats-mobile-z-index;
+}

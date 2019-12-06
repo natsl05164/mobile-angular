@@ -1,0 +1,12 @@
+<ng-container *ngIf="{  state$: historyStore.state$ | async} as subs">
+  <app-history (onUserAction)="historyStore.submitUserAction($event.data,$event.action)"></app-history>
+  <app-history-results-mobile [history]="subs.state$.history" (onUserAction)="onUserAction($event)"></app-history-results-mobile>
+
+
+  <app-dialog #detailsModal [closable]="true" [dialogPositionY]="'5vh'"
+              class="ce-modal"
+              (onClose)="historyStore.setDetailsModalState(null)">
+    <app-history-details *ngIf="subs.state$.historyDetailsModal" [historyDetail]="subs.state$.historyDetailsModal"></app-history-details>
+  </app-dialog>
+</ng-container>
+<!--[requestState]="subs.state$.requests.getTransactionHistoryByTypeDate"--> 

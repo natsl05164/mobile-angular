@@ -1,0 +1,90 @@
+
+
+<ul class="nav row text-center" role="tablist">
+  <li class="col-4  ">
+    
+    <a class=" nav-btn-item" [ngClass]="{'active': depositType=='BankTransfer'}" href="javascript:void(0);" role="tab" (click)="depositType='BankTransfer' ">
+      <div class="channels-logo logo-bank-transfer"></div>
+      <div>Bank Transfer</div>
+    </a>
+  </li>
+  <li class="col-4 " *ngIf="accountView.IsEnablePayTrust88">
+   
+    <a class="nav-btn-item" [ngClass]="{'active': depositType=='PayTrust88'}" href="javascript:void(0);" role="tab" (click)="depositType='PayTrust88' ">
+      <div class="channels-logo logo-paytrust88"></div>
+      <div>Online Transfer</div>
+    </a>
+  </li>
+</ul>
+<div class="tab-content">
+  <!--TODO Fade-->
+  <div class="tab-pane fade  " id="home" role="tabpanel" aria-labelledby="home-tab" [ngClass]="{'show active': depositType=='BankTransfer'}">
+    
+      <div class="row">
+        <div class="col-md-4  ">
+          <div>
+            <table style="width:100%;"> 
+              <tr>
+                <td>Mode:	</td>
+                <td><b>Online & Offline</b></td>
+              </tr>
+              <tr>
+                <td>Min/Max Limit:</td>
+                <td><b>30.00/25,000.00</b></td>
+              </tr>
+              <tr>
+                <td>Daily Limit:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+              <tr>
+                <td>Total Allowed:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+            </table>
+          </div>
+          <br />
+          <div> 
+            Please make sure that you fill up accurate bank account details to avoid any inconveniences.
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <ng-content select="app-direct-deposit-form"></ng-content>
+        </div>
+      </div>
+ 
+  </div>
+  <div class=" fade" *ngIf="accountView.IsEnablePayTrust88" id="profile" role="tabpanel" aria-labelledby="profile-tab" [ngClass]="{'show active':  depositType=='PayTrust88'}">
+    
+      <div class="row">
+        <div class="col-md-4  ">
+          <div>
+            <table style="width:100%;"> 
+              <tr>
+                <td>Mode:	</td>
+                <td><b>Online </b></td>
+              </tr>
+              <tr>
+                <td>Min/Max Limit:</td>
+                <td><b>30.00/25,000.00</b></td>
+              </tr>
+              <tr>
+                <td>Daily Limit:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+              <tr>
+                <td>Total Allowed:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <ng-content select="app-online-deposit-form"></ng-content>
+        </div>
+      </div>
+     
+  </div>
+
+</div>

@@ -1,0 +1,82 @@
+  <!--<div>(except Poker + F1 Fishing)</div>-->
+<ng-template #popTemplate>
+  <div class="divWalletBalance">
+    <table class="table-wallet " id="tableWallet" *ngIf="allBalance">
+      <thead>
+        <tr>
+          <th class="td-first-child bold nowrap"><b>Wallet</b></th>
+          <th class="td-last-child bold nowrap"><b>Balance</b></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="td-first-child">Main</td>
+          <td class="td-last-child">{{allBalance.WalletAmt}}</td>
+        </tr>
+        <tr *ngFor="let gameBal of allBalance.GameBalList ">
+          <td class="td-first-child">{{gameBal.GameName}}</td>
+          <td class="td-last-child" id="{{gameBal.GameID}}">{{gameBal.Balance}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <ng-template #loading>
+      <my-spinner></my-spinner>
+    </ng-template>
+  </div>
+  <hr />
+  <div class="divWalletBalance">
+    <table class="table-bal">
+      <tr>
+        <th class="td-first-child bold nowrap"><b>Total</b></th>
+        <th class="td-last-child bold nowrap"><b>{{allBalance.TotalBalance}}</b></th>
+      </tr>
+    </table>
+  </div>
+</ng-template>
+
+<div class="container-wrapper " *ngIf="allBalance">
+  <div class="container container-box noSidePadding">
+    <div class="title fs-lg">My Account</div>
+    <div class="head-content">
+      <div class="row no-gutters"> 
+        <div class="col-12  ">
+          <table>
+            <tr  >
+              <td rowspan="2" class="pl-2 pr-3"><i class="icon-wallet"></i></td>
+              <td class="">Main </td>
+              <td rowspan="2" class="pl-4" ><button class="btn btn-primary" (click)="onUserAction.emit(UserAction.RefreshBalance)">Refresh <i class="icon-refresh"></i></button></td>
+            </tr>
+            <tr  >
+              <td  >
+                <!--TODO Currency!-->
+                <a href="javascript:void(0)" id="total-balance" class=""
+                   [popover]="popTemplate"
+                   placement="bottom">
+                  MYR {{allBalance.TotalBalance}}
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 col-md-8">
+          <ul class="account_menu">
+            <li><a routerLink="/account/transfer" [routerLinkActive]="['btn-active']">Transfer</a></li>  <!--(click)="accComm.sendGameBalanceLst(allBalance)"-->
+            <li><a class="" routerLink="/account/deposit" [routerLinkActive]="['btn-active']">Deposit</a></li>
+
+            <li><a class=" " routerLink="/account/withdrawal" [routerLinkActive]="['btn-active']">Withdrawal</a></li>  <!--(click)="accComm.sendGameBalanceLst(allBalance)"-->
+
+            <li><a class=" " routerLink="/account/history" [routerLinkActive]="['btn-active']">History</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <router-outlet>
+
+      </router-outlet>
+    </div>
+
+  </div>
+</div>

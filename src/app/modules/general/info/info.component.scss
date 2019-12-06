@@ -1,0 +1,54 @@
+@import "variables";
+html, body, .content, .container-wrapper {
+  height: 100%!important;
+}
+
+:host .container-box .title {
+  padding: 0.7em 1.2em;
+  background-color: var(--bg-3);
+}
+
+
+:host {
+
+  & .content {
+    padding: 15px;
+  }
+
+  & .container-wrapper {
+    background-color: var(--bg-1);
+  }
+
+  & .container {
+    background-color: var(--bg-0);
+    top: 2em;
+    position: relative;
+}
+
+
+}
+
+
+.nav-icon {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+
+  & a {
+    text-decoration: none;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    display: inline-block;
+    font-size: 15px;
+    color: var(--t400);
+
+    & i {
+      font-size: 35px;
+    }
+  }
+
+  & a:hover, & a.active {
+    color: var(--primary);
+  }
+}
+

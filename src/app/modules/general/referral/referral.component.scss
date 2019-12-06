@@ -1,0 +1,10 @@
+@import "variables";
+.referral {
+  /*& li:before {
+    padding-right: 8px;
+    content: "✱";
+  }*/
+  ul {
+    color: text-color(background,base);
+  }
+}

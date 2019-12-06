@@ -1,0 +1,18 @@
+<ng-container *ngIf="{state$: store.state$ | async} as subs">
+   
+  <div class=" mb-3">
+    <app-jackpot2></app-jackpot2>
+  </div>
+  <app-all-slots-mobile [slotGamesView]="subs.state$.slotGamesView" (onUserAction)="onUserAction($event)">
+  </app-all-slots-mobile>
+   
+  <app-dialog #detailsModal (closable)="false" [dialogPositionY]="'25vh'"
+              class="ce-modal"
+              (onClose)="store.setDetailsModalState(null)">
+    <app-game-details *ngIf="subs.state$.gameDetailsModal" [game]="subs.state$.gameDetailsModal.game"></app-game-details>
+  </app-dialog>
+
+</ng-container>
+
+
+

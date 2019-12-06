@@ -1,0 +1,20 @@
+@import "variables";
+.container-box .title {
+  padding: 0.7em 1.2em;
+  background-color: app-color(background,light);
+}
+
+.content {
+  padding: 15px;
+}
+
+
+.container {
+  background-color: app-color(foreground,base);
+  top: 2em;
+  position: relative;
+}
+
+.container-wrapper {
+  background-color: app-color(foreground,dark);
+}

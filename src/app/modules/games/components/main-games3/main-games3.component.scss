@@ -1,0 +1,183 @@
+@import "variables";
+
+.wrapper {
+  padding: 3em 15px;
+}
+
+a.box {
+  margin: 0 10px 30px;
+  display:block;
+}
+
+.overlay-wrapper {
+  position: relative;
+  overflow: hidden;
+ // box-shadow: inset 0px 0px 30px 30px $overlay;
+  box-shadow: $box-shadow-sm;
+  /*margin-bottom: 30px;*/
+}
+
+img {
+  z-index: -2;
+  position: relative;
+  /*min-height:250px;*/
+  max-height: 120px;
+  width: 100%;
+}
+
+
+
+.overlay-hvrshade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: 1px solid transparent;
+  transition: all .3s;
+}
+
+.btn-hvrplay {
+  opacity: 0;
+  transition: all .6s;
+  position: absolute;
+  right: 0px;
+  top: 25%;
+  margin-top: 1em;
+  z-index: 5;
+}
+
+/*.overlay-shade {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity:0.2;
+  background-image: radial-gradient(circle, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ebebeb, #d7d7d8, #c4c4c5, #999a9b, #717273, #4b4d4d, #282a2a);
+}*/
+.overlay-wrapper .overlay-name {
+  width: 60%;
+  text-align: center;
+  display: block;
+  padding-top: 10%;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  height: 100%;
+  transition: all .3s;
+  color: text-color(primary,base);
+  /*text-shadow: 2px 2px 0px var(--t999);*/
+}
+
+.overlay-name {
+  & .title {
+    font-size: 2em;
+    font-weight: 900;
+    /*padding-left: 12px;*/
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    line-height: 1;
+  }
+
+  & .powerby {
+    /*padding: 0.5em;*/
+    font-weight: 700;
+    opacity: 1;
+    transition: all .3s;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0;
+    font-size: 1.5em;
+  }
+}
+
+
+
+.overlay-wrapper:hover {
+
+  /*TODO variables*/
+  & .overlay-hvrshade {
+    opacity: 1;
+    background: rgba(0,0,0,.75);
+    outline: 1px solid rgba(255,255,255,.15);
+    outline-offset: -10px;
+  }
+
+  & .overlay-name {
+    padding-top: 14%;
+
+    & .powerby {
+      opacity: 0;
+      margin-left: -50px;
+    }
+  }
+
+
+  & .btn-hvrplay {
+    opacity: 1;
+    right: 15%;
+    margin-left: -2em;
+  }
+
+
+}
+
+
+:host-context(.mobile) {
+
+  & .btn-hvrplay {
+    /*opacity: 1;
+    right: 15%;
+    margin-left: -2em;*/
+    /*display:none;*/
+  }
+
+  & .overlay-hvrshade {
+    opacity: 1;
+    outline: 1px solid rgba(255,255,255,.15);
+    outline-offset: -10px;
+  }
+}
+
+
+.abs-pos {
+  position: absolute;
+
+  &.top-right {
+    right: 15px;
+    top: 15px;
+  }
+
+
+}
+
+.pc_download_icon { //BASE_MEDIA_URL
+  background: url(/assets/images/small_pc_download_icon.png) no-repeat 100% center;
+  width: 40px;
+  height: 35px;
+}
+
+
+.android_download_icon { //BASE_MEDIA_URL
+  background: url(/assets/images/small_androiddownload_icon.png) no-repeat 100% center;
+  width: 40px;
+  height: 35px;
+}
+
+
+.box-desc {
+  padding: 15px;
+  background-color: app-color(primary,light);
+}
+
+
+:host-context(.mobile) {
+
+  .box-desc {
+    background-color: app-color(primary2,light);
+  }
+}

@@ -1,0 +1,68 @@
+<ng-container *ngIf="slotGamesView">
+  <div class="container">
+    <!-- Background/Carousel/Winner/Jackpot -->
+    <div class="content-header page-background" [style.backgroundImage]="'url('+BASE_MEDIA_URL +slotGamesView.BannerSrc+')'">
+
+      <div class="banner-content">
+        <div>
+          <div style="height: 40px;"></div>
+          <h1 class="banner-title">{{slotGamesView.Title}}</h1>
+          <h3>{{slotGamesView.Description}}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <!--game category dynamic-->
+
+      <div class="g_category-nav nav nav-pills nav-fill ">
+
+        <ng-container *ngFor="let cat of slotGamesView.GameCategories">
+          <div class="nav-item" (click)="filterProperty=cat.FilterProperty">
+            <a class="navlink" href="javascript:void(0);" [ngClass]="{'active': filterProperty== cat.FilterProperty}">
+              {{cat.Name}}
+            </a>
+          </div>
+        </ng-container>
+
+      </div>
+      <br />
+
+      <div class="flex-row flex-wrap games">
+
+        <ng-container *ngFor="let slotRow of slotGamesView.SlotRows">
+          <ng-container *ngFor="let game of slotRow.Slots | callback:filterSlot:filterProperty">
+            <div class="game-box text-center" [ngClass]="{'flex-grow-2' : game.FlexGrow =='2'}">
+              <div class="image">
+                <img [src]="BASE_MEDIA_URL+ game.ImgSrc" class="unveiled"> <!--/*IMAGE MIN WIDTH MUST BE 146, MAX 6 game-box per row */-->
+              </div>
+              <div class="name">
+                <div class="opacity_content">
+                  <div class="opacity_background">
+                  </div><div class="title-wrap">
+                    <div class="game-title fs-lg">{{game.Name}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="game-overlay game-has-try">
+                <div class="game_button_play">
+                  <a [href]="game.PlayLink" (click)="loadGame($event, game.PlayLink);">
+                    PLAY NOW <i class="sprite_white_arrow"></i>
+                  </a>
+                </div>
+                <div class="game_button_try">
+                  <a [href]="game.TryLink" (click)="loadGame($event,game.TryLink);">
+                    TRY NOW <i class="sprite_dark_blue_arrow"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+        </ng-container>
+
+      </div>
+
+    </div>
+  </div>
+</ng-container>

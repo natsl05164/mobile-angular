@@ -1,0 +1,68 @@
+
+
+
+<form [formGroup]="historyForm" (ngSubmit)="onSearchHistory()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+   
+  <div class="form-group row">
+    <label for="transaction_type" class="col-md-2 col-form-label">Transaction Type<span class="text-danger">*</span></label> <!--TODO currency-->
+    <div class="col-md-10">
+
+      <!--<div *ngIf="deposit_amount.invalid && (isFormSubmitted||deposit_amount.dirty || deposit_amount.touched)"
+           class="invalid-feedback">
+        <div *ngIf="deposit_amount.errors.required">
+          Amount is required.
+        </div>
+        <div *ngIf="deposit_amount.errors.minAmt">
+          Amount must be more that 50.
+        </div>
+      </div>-->
+      <select type="text" formControlName="transaction_type" class="form-control" id="transaction_type">
+        <option value=null>--Please select--</option>
+        <option *ngFor="let item of transactionType | enumToArray" [value]="item.index">{{item.name}}</option> 
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="bank_code" class="col-md-2 col-form-label">Date Range<span class="text-danger">*</span></label>
+    <div class="col-md-10">
+
+      <!--<input type="text"  class="form-control"
+            ngxDaterangepickerMd
+            formControlName="daterange"
+            [showCustomRangeLabel]="true"
+            [alwaysShowCalendars]="true"
+            [ranges]="ranges"
+            [linkedCalendars]="true"
+            [isInvalidDate]="isInvalidDate"
+            [showClearButton]="true"
+            placeholder="Select please... " />-->
+      <!--<div *ngIf="bank_code.invalid && (isFormSubmitted||bank_code.dirty || bank_code.touched)"
+           class="invalid-feedback">
+        <div *ngIf="bank_code.errors.required">
+          Bank is required
+        </div>
+      </div>-->
+      <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">@</span>
+        </div>
+        <input type="text" class="form-control"
+               ngxDaterangepickerMd
+               formControlName="daterange"
+               [showCustomRangeLabel]="true"
+               [alwaysShowCalendars]="true"
+               [ranges]="ranges"
+               [showClearButton]="true"
+               placeholder="Select please... "
+               [locale]='{"format": "DD MMM YYYY", "separator": " To ", "cancelLabel": "Cancel", "applyLabel": "Okay" }' />
+      </div>
+    </div>
+  </div>
+  <div class="form-group row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>

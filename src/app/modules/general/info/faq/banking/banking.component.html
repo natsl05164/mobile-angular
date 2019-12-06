@@ -1,0 +1,61 @@
+<div class="border-box">
+  <!--<h4><strong>Banking</strong></h4>-->
+  <p> {{websiteData.WebTitle}} is known for its efficient and secure transaction. Group of professional staff provided to ensure that all the transaction will be proceeded smooth and securely.</p>
+
+  <h5><strong>BANK LISTS</strong></h5>
+  <p>Here is the list of banking details provided for  {{websiteData.WebTitle}} {{websiteData.Country}} : </p>
+  <div class="table-responsive ">
+    <table class="table table-default">
+      <thead>
+        <tr>
+          <th rowspan="2">
+            Bank Name
+          </th>
+          <th rowspan="2">
+            Status
+          </th>
+          <th rowspan="2">Transaction</th>
+          <th rowspan="2">Banking Method</th>
+          <th colspan="2">Transaction Limit</th>
+          <th rowspan="2">Processing Time</th>
+        </tr>
+        <tr>
+          <th>
+            Min
+          </th>
+          <th>
+            Max
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let bank of (bankingOptionLst$|async)">
+          <tr class="first-child">
+            <td rowspan="2">
+              {{bank.BankName}}<br />
+              <div [ngClass]="[true? bank.LogoClass : ''] " class="img-fluid"></div>
+            </td>
+            <td rowspan="2">
+              {{bank.Status}}
+            </td>
+            <td>Deposit</td>
+            <td>{{bank.Deposit.Method}}</td>
+            <td>{{bank.Deposit.Min}}</td> <!--TODO add currency and use currency pipe-->
+            <td>{{bank.Deposit.Max}}</td> <!--TODO add currency and use currency pipe-->
+            <td>{{bank.Deposit.ProcessingTime}}</td>
+          </tr>
+          <tr>
+   
+            <td>Withdrawal</td>
+            <td>{{bank.Withdrawal.Method}}</td>
+            <td>{{bank.Withdrawal.Min}}</td> <!--TODO add currency and use currency pipe-->
+            <td>{{bank.Withdrawal.Max}}</td> <!--TODO add currency and use currency pipe-->
+            <td>{{bank.Withdrawal.ProcessingTime}}</td>
+          </tr>
+        </ng-container>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

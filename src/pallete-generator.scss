@@ -1,0 +1,19 @@
+/*https: //seesparkbox.com/foundry/relative_color_palettes_with_sass*/
+/*https: //codepen.io/sltan/pen/YzzbbqO*/
+/*https: //sassme.jim-nielsen.com/*/
+/*https: //codepen.io/icebob/pen/OPrXJq*/
+@function pale($color, $desaturate_lvl: 10, $lighten_lvl:30,$hue_lvl:0 ) {
+  // Used for the background.
+  @return adjust_hue(lighten( desaturate( $color, $desaturate_lvl ), $lighten_lvl ),$hue_lvl);
+}
+
+@function light($color, $saturate_lvl:25 , $lighten_lvl: 20,$hue_lvl: 0 ) {
+  // Used for the cube's top.
+  @return adjust_hue(lighten( saturate( $color, $saturate_lvl ), $lighten_lvl ),$hue_lvl);
+}
+
+@function dark($color, $desaturate_lvl: 20, $darken_lvl: 12,$hue_lvl: 0 ) {
+  // Used for the cube's side.
+  @return adjust_hue(darken( desaturate( $color, $desaturate_lvl ), $darken_lvl ), $hue_lvl );
+}
+

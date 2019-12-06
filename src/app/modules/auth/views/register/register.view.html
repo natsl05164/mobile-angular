@@ -1,0 +1,13 @@
+<ng-container  > 
+  <app-register *ngIf="!isSuccess">
+    <app-register-form [requestState]="requestState" (onUserAction)="submitUserAction($event.data, $event.action)" >
+
+    </app-register-form>
+  </app-register>
+
+  <app-register-success *ngIf="isSuccess" [websiteData]="appSettings.websiteData">
+
+  </app-register-success>
+
+
+ </ng-container>

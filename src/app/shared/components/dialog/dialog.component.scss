@@ -1,0 +1,50 @@
+@import 'variables';
+
+$ce-modal__width: 600px;
+$ce-modal__spacing--vertical: 25;
+$ce-modal__breakpoint--bigger-vertical-spacing: 800px;
+ 
+.ce-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw; /*% change to vw unit as mobile side nav creates overflow body content out of screen*/
+  z-index: $z-index--modal;
+  padding: $spacing--default;
+  background: $overlay;
+}
+.dialog__close-btn {
+  background: transparent;
+  color: text-color(secondary, base);
+  font-size: 1.2em;
+  border: 0;
+}
+
+
+.ce-modal__content-container {
+  max-width: $ce-modal__width;
+  max-height: 100%;
+  margin: 0 auto;
+  overflow: auto;
+  background: transparent;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.5); /*TODO variables*/
+  border-radius: $border-radius;
+
+}
+
+/*:host::ng-deep .ce-modal__actions {
+  padding: $spacing--small;
+  background: $primary-contrast;
+}*/
+
+
+ 
+
+/*:host-context(.mobile) {
+  & .ce-modal__backdrop {
+     padding-top: $ce-modal__spacing--vertical * 1vh;
+    background: $overlay;
+  }
+}*/

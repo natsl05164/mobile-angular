@@ -1,0 +1,29 @@
+@import "variables";
+
+:host {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#009ec3+0,00b7ea+100 */
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: app-color(primary,base); /* Old browsers */
+  background: -moz-linear-gradient(45deg, app-color(primary,base) 0%, app-color(primary,dark) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, app-color(primary,base) 0%,app-color(primary,dark) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, app-color(primary,base) 0%,app-color(primary,dark) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=app-color(primary,base), endColorstr=app-color(primary,dark),GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+li, a{
+
+  display:block;
+
+
+  & img, & span
+  {
+    /*float:left;*/
+
+   vertical-align:middle;
+  }
+}
+
+

@@ -1,0 +1,14 @@
+<div class="">
+  <h4 class="title">New Games</h4>
+  <ul>
+    <!--{{runChangeDetection}}-->
+    <li *ngFor="let game of newGames">
+      <a routerLink="todo" class="game-box">
+        <img class="" alt="" [src]="BASE_MEDIA_URL+ game.ImgSrc" />
+
+        <h5 class="text-center">{{game.Name}}</h5>
+      </a>
+    </li>
+  </ul>
+
+</div>

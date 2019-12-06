@@ -1,0 +1,40 @@
+
+  <div class="container">
+    
+    <div class="promo-list">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let promo of (promoLst$ |async)" hideToggle>
+          <mat-expansion-panel-header [collapsedHeight]="'300px'" [expandedHeight]="'300px'">
+            <div><img [src]="BASE_MEDIA_URL+ promo.ImgSrc" class=" img-fluid " /></div>
+            <div class="toptobottom side-toggle">Details</div>
+          </mat-expansion-panel-header>
+
+          <div [style.overflow]="'auto'" [style.height.px]="'250'">
+            <h2 class="title">
+              {{ promo.Title}} 
+            </h2>
+            <div>
+              <h4 class="sub-title">Details</h4>
+              <ol>
+                <li *ngFor="let offer of promo.Content.Offers">
+                  <div [ngClass]="{'text-danger':offer.IsHighlighted}" [innerHTML]="offer.ListContent | safe :'html'">
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div>
+              <h4 class="sub-title">Terms & Conditions</h4>
+              <ol>
+                <li *ngFor="let term of promo.Content.Terms">
+                  <div [ngClass]="{'text-danger':term.IsHighlighted}" [innerHTML]="term.ListContent | safe :'html'">
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>

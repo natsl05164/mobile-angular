@@ -1,0 +1,8 @@
+<ng-container *ngIf="{balanceState$: balanceStore.state$ | async, accViewState$: accountStore.state$ | async} as subs">
+  <ng-container *ngIf="subs.accViewState$.accountView">
+    <app-transfer [requestState]="subs.balanceState$.requests.transfer" [allBalance]="subs.balanceState$.allBalanceList" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)">
+      <app-transfer-form [gameList]="subs.accViewState$.accountView.GameList" (onUserAction)="balanceStore.submitUserAction($event.data,$event.action)"></app-transfer-form>
+    </app-transfer>
+  </ng-container>
+</ng-container>
+

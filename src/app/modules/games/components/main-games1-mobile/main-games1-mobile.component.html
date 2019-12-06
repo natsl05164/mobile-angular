@@ -1,0 +1,30 @@
+<div>
+  <h5 class="title">SLOT PROVIDERS</h5>
+  <ul>
+
+    <ng-container *ngIf="gamesView">
+      <li *ngFor="let game of gamesView.Games">
+        <button   [routerLink]="['/games/slots',{ outlets: { 'mobileSubGames': [game.ID] } }]" class="btn game-box" [routerLinkActive]="['active']">
+          <!--<img class="" alt="" />-->
+          <!--TAKE NOTE : Hardcorded here the logo with game.ID-->
+          <ng-container *ngIf="game.ID.toUpperCase() as gameID">
+            <span class="poweredBy-logo "
+                  [ngClass]="{'logo_ag':gameID=='AG' ,
+                              'logo_pp':gameID=='PM',
+                              'logo_sbo':gameID=='SBO' ,
+                              'logo_sg':gameID=='SG',
+                  'logo_hb':gameID=='HB',
+                  'logo_joker':gameID=='JOKER',
+                  'logo_mg':gameID=='MG',
+                  'logo_dmc':gameID=='DMC'}">
+
+            </span>
+          </ng-container>
+
+         <span class="text-center"> {{game.Name}}</span>
+        </button>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+<!--[routerLink]="[{ outlets: { mobileSubGames: ['test'] } }]"-->

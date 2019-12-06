@@ -1,0 +1,107 @@
+<form [formGroup]="withdrawForm" (ngSubmit)="onSubmitWithdraw()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+
+  <div class="form-group row">
+    <label for="WithDrawAmt" class="col-md-4 col-form-label">Total </label> <!--TODO currency-->
+    <div class="col-md-8">
+      <input type="money" formControlName="WithDrawAmt" (blur)="transformAmount($event)" class="form-control" id="WithDrawAmt" placeholder="" required maxlength="255">
+      <div *ngIf="WithDrawAmt.invalid && (isFormSubmitted||WithDrawAmt.dirty || WithDrawAmt.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="WithDrawAmt.errors.required">
+          Amount is required.
+        </div>
+        <div *ngIf="WithDrawAmt.errors.minAmt">
+          Amount must be more that 50.
+        </div>
+        <div *ngIf="WithDrawAmt.errors.exceedWalletAmt">
+          Amount must be not be more than main wallet amout
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <label for="Bank Type" class="col-4 col-form-label">Bank Type</label>
+    <div class="col-4">
+
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="WithdrawType" name="WithdrawType" [value]=1 id="defaultCheck1">
+
+        <label for="defaultCheck1" class=" col-form-label">Registered </label> <!--TODO currency-->
+      </div>
+    </div>
+    <div class="col-4">
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="WithdrawType" name="WithdrawType" [value]=2 id="defaultCheck2">
+
+        <label for="defaultCheck2" class=" col-form-label">New Bank </label> <!--TODO currency-->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row" *ngIf="WithdrawType.value==1">
+    <label for="BankInfoID" class="col-md-4 col-form-label">Already Registered<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select type="text" formControlName="BankID" class="form-control" id="BankInfoID">
+        <option value=null>--Select Bank--</option>
+        <option *ngFor="let bank of accountView.UserBankInfo" [value]=bank.BankID>{{bank.BankName}} ({{bank.AccountNo}})</option>
+      </select>
+      <div *ngIf="BankID.invalid && (isFormSubmitted||BankID.dirty || BankID.touched)"
+           class="invalid-feedback">
+        <div *ngIf="BankID.errors.required">
+          Transfer TO is required.
+        </div>
+        <div *ngIf="BankID.errors.transferToSame">
+          Transfer To the game cannot be same as game Transfer From .
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row" *ngIf="WithdrawType.value==2">
+    <label for="BankID" class="col-md-4 col-form-label">New Bank<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select type="text" formControlName="BankID" class="form-control" id="BankID">
+        <option value=null>--Select Bank--</option>
+        <option *ngFor="let bank of accountView.AllBankList" [value]=bank.BankID>{{bank.BankName}} </option>
+      </select>
+      <div *ngIf="BankID.invalid && (isFormSubmitted||BankID.dirty || BankID.touched)"
+           class="invalid-feedback">
+        <div *ngIf="BankID.errors.required">
+          Transfer TO is required.
+        </div>
+        <div *ngIf="BankID.errors.transferToSame">
+          Transfer To the game cannot be same as game Transfer From .
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <label for="FullName" class="col-md-4 col-form-label">Full Name</label>
+    <div class="col-md-8">
+      <input type="text" disabled formControlName="FullName" class="form-control" id="FullName" placeholder="" required>
+    </div>
+
+  </div>
+  <div class="form-group row" *ngIf="WithdrawType.value==2">
+    <label for="AccountNo" class="col-md-4 col-form-label">Account No.</label>
+    <div class="col-md-8">
+      <input [type]="text" formControlName="AccountNo" class="form-control" id="AccountNo" placeholder="" required value="">
+    </div>
+
+  </div>
+  <div class="form-group row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <button type="submit" class="btn btn-primary">Withdraw</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,5 @@
+<ng-container *ngIf="{balanceState$: balanceStore.state$ | async} as subs">
+  <app-account [allBalance]="subs.balanceState$.allBalanceList" (onUserAction)="balanceStore.reloadBalanceInfo()">
+
+  </app-account>
+</ng-container>

@@ -1,0 +1,57 @@
+<!--SPORTS--> 
+  <div class="static-carousel">
+    <img src="assets/images/main-top/bg-sb-compressor-cropped.jpg" style="display: block; width: 100%;max-height:100%;"><!--TODO img-->
+   
+    <div class="opacity_content" style="color:var(--primary-text)" *ngIf="pagiContentArr.length>0">
+
+      <app-content-pagination [contentArray]="pagiContentArr" [arrayItemsPerPage]="1" [isSetTimer]="false" [interval]="5000"></app-content-pagination>
+    </div>
+    <div class="primary-text-box clearfix">
+      <div class="float-left fs-sm">
+        New to W88? Get a free account and start playing in a matter of <br /> minutes.
+      </div>
+      <div class="ml-2 float-right">
+        <a routerLink="/register" class="btn btn-secondary">REGISTER NOW!</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+      <div>
+
+      </div>
+      <div class="row no-gutters games-container">
+        <div class="col-6 col-md-4 col-lg-3 game-box-wrap" *ngFor="let item of  gamesView.Games">
+
+          <div class="" style="position:relative;">
+            <div>
+              <img class="img-fluid" [src]="BASE_MEDIA_URL + item.ImgSrc" />
+            </div>
+            <div class="bottom_text ">
+              <div class="opacity_background"></div>
+              <div class="opacity_content" style="padding: 10px;color:#fff;">
+                <div class="title "><h3>{{item.Name}}</h3></div>
+                <div style="height: 26px;">{{item.Description}}</div>
+                <hr class="">
+                <!--[routerLink]="['../../', item.ID ]"-->
+                <a routerLink="/games/sports/{{item.ID}}"  class="link_blue ">PLAY NOW <i class="sprite_blue_arrow"></i></a> <!--TODO playlink--><!--[routerLink]="['../', item.ID ]"-->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+ 
+
+<!--<div class="site-footer pl-xl-8 pr-xl-8 pl-lg-5 pr-lg-5 pl-md-4 pr-md-4">
+  <app-footer [facebookUrl]="facebookUrl"
+              [twitterUrl]="twitterUrl"
+              [instagramUrl]="instagramUrl"
+              [youtubeUrl]="youtubeUrl">
+  </app-footer>
+</div>
+
+<app-floats></app-floats>-->

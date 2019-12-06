@@ -1,0 +1,9 @@
+
+  <div (touchstart)="swipe($event, 'start' )" (touchend)="swipe($event, 'end' )" >
+    <carousel [interval]=5000 [(activeSlide)]="activeIndex" [noPause]="false" (activeSlideChange)="getCurrentActiveSlide($event)">
+      <!--nopause = pause on hover [pauseOnFocus]="true" -->
+      <slide *ngFor="let slide of slides">
+        <img [src]="slide.ImgUrl" [alt]="slide.AltText" style="display: block; width: 100%; max-height:100%; min-height:180px;">
+      </slide> 
+    </carousel> 
+  </div>

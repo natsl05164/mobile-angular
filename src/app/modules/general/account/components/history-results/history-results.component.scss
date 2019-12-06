@@ -1,0 +1,29 @@
+@import "variables";
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-container {
+  position: relative;
+  min-height: 200px;
+}
+
+
+.mat-elevation-z8 .loading-shade {
+  background: app-color(background, dark); //rgba(0, 0, 0, 0.15);
+}
+ 
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}

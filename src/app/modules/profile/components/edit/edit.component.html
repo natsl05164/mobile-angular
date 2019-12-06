@@ -1,0 +1,31 @@
+
+ 
+    <div class="row">
+      <div class="   col-md-5 col-12">
+        <div class="row">
+          <div class="col-4"> <p>Username</p> </div>
+          <div class="col-8"><p>{{userInfo.UserName}}</p></div>
+        </div>
+        <div class="row">
+          <div class="col-4"> <p>Full Name</p> </div>
+          <div class="col-8"> <p>{{userInfo.FullName}}</p> </div>
+        </div>
+        <div class="row">
+          <div class="col-4">  <p>Email Address </p> </div>
+          <div class="col-8"> <p>{{userInfo.Email}}</p> </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-12">
+        <div class="row">
+          <div class="col-4"> <p>Contact Number</p>  </div>
+          <div class="col-8"> <p>{{userInfo.Phone}}</p> </div><!--(//TODO masked)-->
+        </div> 
+        <div class="row">
+          <div class="col-4"> <p>Refferal Code</p> </div>
+          <div class="col-8"> <p><input type="text" value="{{domain + '/register?id='+userInfo.Refferal}}" readonly id="elCopyText" style="width: 80%;">&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" (click)="copyText()"> <i class="icon-copy"></i></a></p> </div>
+
+        </div>
+      </div>
+
+    </div>
+

@@ -1,0 +1,79 @@
+
+<ng-template #mainContent>
+  <ng-content select="router-outlet"></ng-content>
+  <livechat-widget [licenseId]="appSettings.websiteData.LiveChatLicenceID"  (onChatLoaded)="onChatLoaded($event)"></livechat-widget>
+</ng-template>
+
+
+<ng-template #desktop>
+
+  <app-top-bar *ngIf="showHeader" [auth]="auth" [urlSiteLogo]="BASE_MEDIA_URL + appSettings.websiteData.WebsiteLogo" (onUserAction)="onUserAction($event.action,null,$event.data, $event.modalRefController)" [announcement]="announcement"></app-top-bar>
+
+  <!--[isLogin]="authService.isLogin()"-->
+  <app-main-nav *ngIf="showHeader" [arrMenu]="mainNavMenu"> </app-main-nav>
+
+  <div class="content">
+    <!--The content below is only a placeholder and can be replaced.-->
+    <ng-container [ngTemplateOutlet]="mainContent"></ng-container>
+  </div>
+
+
+
+  <div class="site-footer" *ngIf="showFooter">
+    <div class="container">
+      <app-footer [websiteData]="appSettings.websiteData">
+      </app-footer>
+    </div>
+  </div>
+  <!--<app-floats *ngIf="showFloats"></app-floats>-->
+  <ng-container>
+    <app-floats *ngIf="showFloats"></app-floats>
+
+  </ng-container>
+</ng-template>
+
+
+
+<ng-template #mobile>
+
+  <div class="full-container mobile ">
+    <div #sideNav class="side-nav" [ngClass]="{'open':isSideNavOpen, 'navContentOpen':isOpenNavContent}">
+      <app-main-nav-mobile *ngIf="showHeader" [arrMenu]="mainNavMenu" (onUserAction)="onUserAction(null,$event.action,$event.data)"> </app-main-nav-mobile>
+    </div>
+
+    <!--<div #sideNav class="side-nav" [ngClass]="{'open':isSideNavOpen, 'navContentOpen':isOpenNavContent}">
+      <app-dynamic-content #dynamicContentOutlet  ></app-dynamic-content>
+
+    </div>-->
+
+    <div class="main-content" [ngClass]="{'sideNavOpen':isSideNavOpen , 'navContentOpen':isOpenNavContent, 'rightSideBarOpen':isOpenRightSideBar}">
+      <app-top-bar-mobile [auth]="auth" [urlSiteLogo]="BASE_MEDIA_URL_MOBILE + appSettings.websiteData.WebsiteLogo" #topBarMobile *ngIf="showHeader" (onToggleSideNav)="isSideNavOpen=!isSideNavOpen;   this.isOpenNavContent =false ;"></app-top-bar-mobile>
+      <div class="content" #mainContentContainer>
+
+        <!--The content below is only a placeholder and can be replaced.-->
+        <ng-container [ngTemplateOutlet]="mainContent"></ng-container>
+      </div>
+
+      <router-outlet name="rightSideBar" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+      </router-outlet>
+    </div>
+  </div>
+
+
+  <ng-container *ngIf="{  state$: layoutStore.state$ | async} as subs">
+
+    <app-dialog #gameModal [closable]="true" [dialogPositionY]="'5vh'"
+                class="ce-modal"
+                (onClose)="layoutStore.setGameMenuModalState(null)">
+
+      <app-game-menu-modal *ngIf="subs.state$.gameMenuModal" [gameModalParam]="subs.state$.gameMenuModal"></app-game-menu-modal>
+    </app-dialog>
+  </ng-container>
+</ng-template>
+
+
+
+<ng-container *ngTemplateOutlet="appState.isMobile() ? mobile : desktop">
+
+</ng-container>
+

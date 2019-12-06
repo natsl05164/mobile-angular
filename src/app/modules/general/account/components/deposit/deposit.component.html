@@ -1,0 +1,94 @@
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active': depositType=='BankTransfer'}" href="javascript:void(0);" role="tab" (click)="depositType='BankTransfer' ">Bank Transfer</a>
+  </li>
+  <li class="nav-item" *ngIf="accountView.IsEnablePayTrust88">
+    <a class="nav-link" [ngClass]="{'active': depositType=='PayTrust88'}" href="javascript:void(0);" role="tab" (click)="depositType='PayTrust88' ">Online Transfer</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <!--TODO Fade-->
+  <div class="tab-pane fade  " id="home" role="tabpanel" aria-labelledby="home-tab" [ngClass]="{'show active': depositType=='BankTransfer'}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 separator-right">
+          <div>
+            <table style="width:100%;">
+              <tr>
+                <td>Option:</td>
+                <td><b>Bank Transfer</b></td>
+              </tr>
+              <tr>
+                <td>Mode:	</td>
+                <td><b>Online & Offline</b></td>
+              </tr>
+              <tr>
+                <td>Min/Max Limit:</td>
+                <td><b>30.00/25,000.00</b></td>
+              </tr>
+              <tr>
+                <td>Daily Limit:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+              <tr>
+                <td>Total Allowed:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+            </table>
+          </div>
+          <br />
+          <div>
+            TODO are favourite for our speedy crediting of funds to your account and experience. Thus, please use Bank Transfer via your local bank account. We do not accept all kinds of deposit by "Cheque" or "Bank Draft" (Company OR Personal Cheque) as your deposit method.
+            <br />   <br />
+            Note: Once you have successfully submitted your deposit form and once your funds is cleared in our account, just leave it to our team to process your transactions as speedy as possible. If more than 10 minutes, let us know by clicking <a href="javascript:void(0);">here TODO</a> and our Customer Service support will assist you 24/7 anytime.
+            <br />   <br />
+            Please make sure that you fill up accurate bank account details to avoid any inconveniences.
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <ng-content select="app-direct-deposit-form"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" *ngIf="accountView.IsEnablePayTrust88" id="profile" role="tabpanel" aria-labelledby="profile-tab" [ngClass]="{'show active':  depositType=='PayTrust88'}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 separator-right">
+          <div>
+            <table style="width:100%;">
+              <tr>
+                <td>Option:</td>
+                <td><b>Paytrust88</b></td>
+              </tr>
+              <tr>
+                <td>Mode:	</td>
+                <td><b>Online </b></td>
+              </tr>
+              <tr>
+                <td>Min/Max Limit:</td>
+                <td><b>30.00/25,000.00</b></td>
+              </tr>
+              <tr>
+                <td>Daily Limit:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+              <tr>
+                <td>Total Allowed:</td>
+                <td><b>Unlimited</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <ng-content select="app-online-deposit-form"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

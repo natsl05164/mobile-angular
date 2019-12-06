@@ -1,0 +1,30 @@
+@import "variables";
+/*@import "mixins";*/
+.promo-box {
+  padding: 1.5em 1em;
+  border: 1px solid app-color(primary,dark);
+  max-width: 271px;
+  background-color: app-color(background,dark);
+}
+
+
+
+sup {
+  background-color: app-color(primary,dark);
+  padding: 3px 4px;
+  color: text-color(primary,base);
+  border-radius: $border-radius;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.container {
+  
+  @include mobile_desktop_style(background-color, $body-bg,$body-bg-sm);
+  top: 2em;
+  position: relative;
+}

@@ -1,0 +1,37 @@
+<div class="{{contentClass + ' content-wrapper'}}" >
+  <div #contentBox  class="content-box" *ngIf="returnedArray.length>0" [@slidingIn]="slide1EnterState"  [@slidingOut]="slide1LeaveState">
+    <ng-container *ngFor="let content of returnedArray" ><div class="content-item" [innerHTML]="content |  safe :'html'"></div></ng-container>
+  </div>
+  <div #contentBox class="content-box" *ngIf="returnedArray2.length>0"  [@slidingIn]="slide2EnterState" [@slidingOut]="slide2LeaveState">
+    <ng-container *ngFor="let content of returnedArray2" ><div class="content-item" [innerHTML]="content |  safe :'html'"></div></ng-container>
+  </div>
+  <!--class="content-item ml-5 mt-3"-->
+</div>
+
+
+<div style="display:flex;justify-content:center;">
+  <pagination [directionLinks]="false"
+              [boundaryLinks]="false"
+              [totalItems]="contentArray.length"
+              [itemsPerPage]="arrayItemsPerPage"
+              (pageChanged)="pageChanged($event)"
+              [(ngModel)]="currentPage"
+              pageBtnClass="custom-indicator"></pagination>
+</div>                          
+ 
+<!--<div class="row">
+  <div class="col-12">
+    <pager [totalItems]="contentArray.length"
+           [(ngModel)]="currentPage"
+           (pageChanged)="pageChanged($event)"
+           pageBtnClass="btn pager-btn"
+           [itemsPerPage]="arrayItemsPerPage"
+           nextText="&rsaquo;"
+           [previousText]="'&lsaquo;' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + currentPage+'/'+contentArray.length " >
+    </pager>
+    <div style="display:inline;">
+      <i [class]="timerClass"></i>
+    </div>
+  </div>
+</div>-->
+

@@ -1,0 +1,16 @@
+<form name="disabledForm"> 
+  <div class="form-group ">
+    <label for="password" class="fs-lg">User Name</label>
+    <div class="icon-input">
+      <input type="text" class="form-control input-l" name="UserName" required="required" value="{{ this.appLoginDetails.AppUserName}}"  id="UserName" aria-describedby="userNameHelp" disabled>
+      <i class="icon-user"></i>
+    </div>
+  </div>
+  <div class="form-group ">
+    <label for="password" class="fs-lg">Mobile App Password</label>
+    <div class="icon-input">
+      <input type="password" class="form-control  input-l"   name="Password"  value="{{ this.appLoginDetails.AppPassword}}" required="required" disabled />
+      <i class="icon-lock-closed"></i> 
+    </div>
+  </div> 
+</form>

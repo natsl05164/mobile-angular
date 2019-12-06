@@ -1,0 +1,54 @@
+@import "variables";
+
+$top-bar-height: 47px;
+ 
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $top-bar-mobile-z-index;
+}
+
+.inner-header {
+  background-color: $top-bar-bg--sm;
+  color: text-color(secondary,base);
+  opacity: 0.95;
+}
+
+
+a, button {
+  display: block;
+  height: $top-bar-height;
+  font-size: $font-size-xxl;
+  color: $primary;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.btn {
+  &:hover {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  &:focus, &.focus {
+    outline: 0;
+    box-shadow:none;
+  }
+}
+
+
+a {
+  & > i, & > div {
+    line-height: $top-bar-height;
+    height: $top-bar-height;
+    vertical-align: middle;
+    padding: 0.5em 0.5em;
+  }
+}
+
+.logo img {
+  height: $top-bar-height/2;
+  vertical-align: top;
+}

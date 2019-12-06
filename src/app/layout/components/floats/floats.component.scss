@@ -1,0 +1,118 @@
+@import "variables";
+.floats {
+  position: fixed;
+  top: 200px;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  /*animation-name: moveOut;
+  animation-duration: 5s; 
+  animation-delay: 5s;*/
+  transition-delay: 1s;
+  z-index: 99;
+}
+
+.fixed-top-2{
+  top:25px;
+}
+
+.floats-right {
+  right: 0;
+  transform: translateX(150px);
+}
+
+.floats-left {
+  left: 0;
+  transform: translateX(-223px);
+}
+
+.floats-right:hover {
+  transform: translateX(0);
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  /*animation: movein 2s ;*/
+  z-index: 99;
+}
+
+.floats-left:hover {
+  transform: translateX(0);
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  /*animation: movein 2s ;*/
+  z-index: 99;
+}
+ 
+ 
+
+
+
+.fc{
+  min-width:221px;
+  min-height:250px;
+}
+
+.fc > div {
+  display: inline-block;
+  margin: 0;
+  vertical-align: top;
+  position: relative;
+  color:#fff!important; /**TODO color*/
+}
+
+.floats-right .fc .fc-left, .floats-left .fc .fc-right {
+  min-width: 71px;
+  min-height: 190px;
+  border: 2px solid #84b2c7;
+  background-image: linear-gradient(to right bottom, #3ea5d5, #3793bd, #3081a6, #2a6f90, #235e7a);
+  padding: 0.8em;
+}
+
+.floats-right .fc .fc-left   {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+.floats-left .fc .fc-right  {
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+
+
+.floats-right .fc .fc-right, .floats-left .fc .fc-left {
+  border: 1px solid black;
+  min-width: 150px;
+  min-height: 250px;
+  border: 2px solid #648c9e;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  border-left-color: #5ca6c7;
+  background-image: linear-gradient(to right bottom, #3ea5d5, #3793bd, #3081a6, #2a6f90, #235e7a);
+  padding-left: 7px;
+  padding-right: 7px;
+
+  & a {
+    color: #fff !important; /**TODO color*/
+    /*line-height: 2.5em;*/
+    /*min-height: 2.5em;*/
+    padding: 3px;
+    max-width: 132px;
+  }
+
+  & a.bg-btn {
+    width: 100%;
+    background-color: #548296;
+    border-radius: 17px;
+  }
+}
+
+#btn-joinNow {
+  border-radius: $border-radius;
+  background-color: app-color(primary,light); 
+}
+

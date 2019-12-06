@@ -1,0 +1,23 @@
+<div class="inner-header flex-row ">
+
+  <button #btnToggleSideNav (click)="toggleSideNav()" class="btn">
+    <i class="icon-bars"></i>
+  </button>
+  <a routerLink="/home" title="" class="flex-col logo">
+    <!--TODO put site tile-->
+    <div><img class="img-fluid" [src]="urlSiteLogo" /></div>
+  </a>
+
+
+  <ng-container #local="var" [var]="{isLogin: (auth != null)}">
+    <a *ngIf="!local.isLogin" [routerLink]="[ { outlets: {  'rightSideBar': ['rSideBar', {
+                             outlets: { 'childOutlet': ['login']}}]  } }]">
+      <i class="icon-user-o"></i>
+    </a>
+    <a *ngIf="local.isLogin" [routerLink]="[  { outlets: {  'rightSideBar':  ['rSideBar', {
+                             outlets: { 'childOutlet': ['profile', 'edit']}}]   } }]">
+      <i class="icon-user-o"></i>
+    </a>
+  </ng-container>
+
+</div>

@@ -1,0 +1,18 @@
+
+  <ng-container *ngIf="{state$: store.state$ | async} as subs">
+    <app-main-games1 [gamesView]="subs.state$.gamesView" *ngIf="intTemplate==1">
+      <!--slots-->
+    </app-main-games1>
+
+    <!--<app-main-games2 [gamesView]="subs.state$.gamesView" *ngIf="intTemplate==2">
+      sports
+    </app-main-games2>-->
+
+    <app-main-games3 [gamesView]="subs.state$.gamesView" *ngIf="intTemplate==3"   [isMobile]="false" >
+      <!--casino-->
+    </app-main-games3>
+    <app-main-games2 [gamesView]="subs.state$.gamesView" *ngIf="intTemplate==2">
+      <!--sports-->
+    </app-main-games2>
+      
+  </ng-container>

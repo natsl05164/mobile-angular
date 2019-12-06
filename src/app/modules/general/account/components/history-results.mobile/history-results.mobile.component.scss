@@ -1,0 +1,39 @@
+@import "variables";
+
+$debit-color:red;
+$credit-color: $success; //green
+
+.debit-amt {
+  color: $debit-color
+}
+
+.credit-amt {
+  color: $credit-color
+}
+
+
+.h-result.row {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  &:nth-of-type(2n+1) {
+    background-color: app-color(background,light);
+  }
+}
+
+ 
+.row-head{
+  font-weight:bold;
+}
+
+.status, .row-footer, .total-data .title, sup {
+  color: text-color(background,dark);
+}
+
+
+
+.total-data {
+  background-color: app-color(background,light);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

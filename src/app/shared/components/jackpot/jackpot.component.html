@@ -1,0 +1,21 @@
+<div class="jackpot">
+ 
+  <div class="clearfix" style="width:100%">
+    <div class="float-left blink_me">
+      <h4><i class="icon-trophy"></i> </h4> 
+    </div>
+    <div class="float-left blink_me">
+      <h4 class="title ">&nbsp;Progressive Jackpot &nbsp;&nbsp;</h4>
+    </div>
+    <div class="  float-right">
+      <h3 class="title ">
+        <ng-container *ngIf="!isError ;else error">
+         {{jackpotAmount}}
+        </ng-container>
+        <ng-template #error>
+          Updating
+        </ng-template>
+      </h3>
+    </div>
+  </div>
+</div>

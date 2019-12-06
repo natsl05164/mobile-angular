@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "http://apis.starwin365.org/api",
+    "secure": false,
+    "pathRewrite": { "^/api": "" },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

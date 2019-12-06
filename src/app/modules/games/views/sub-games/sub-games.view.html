@@ -1,0 +1,10 @@
+<ng-container *ngIf="{state$: store.state$ | async} as subs">
+
+  <app-all-slots [slotGamesView]="subs.state$.slotGamesView" (onUserAction)="onUserAction($event)">
+    <!--TODO loader per game -->
+  </app-all-slots>
+    
+</ng-container>
+ 
+
+

@@ -1,0 +1,213 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()" novalidate [ngClass]="{'needs-validation was-validated':isFormSubmitted,'needs-validation':!isFormSubmitted }">
+  <div class="form-group row">
+    <label for="inputFullName" class="col-md-4 col-form-label">Full Name<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="text" formControlName="FullName" class="form-control" id="inputFullName" placeholder="" required maxlength="255">
+      <div *ngIf="FullName.invalid && (isFormSubmitted||FullName.dirty || FullName.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="FullName.errors.required">
+          FullName is required.
+        </div>
+        <div *ngIf="FullName.errors.minlength">
+          FullName must be at least 4 characters long.
+        </div>
+      </div>
+      <small>The registered name must match the name of the bank account used to deposit and withdraw funds.</small>
+
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputUsername" class="col-md-4 col-form-label">Username<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="text" name="Username" formControlName="Username" class="form-control" id="inputUsername" placeholder="" required maxlength="255">
+      <div *ngIf="Username.invalid && (isFormSubmitted||Username.dirty || Username.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="Username.errors.required">
+          Username is required.
+        </div>
+        <div *ngIf="Username.errors.minlength">
+          Username must be at least 7 characters long.
+        </div>
+        <div *ngIf="Username.errors.userExists">
+          Username is not available.
+        </div>
+        
+      </div>
+
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail" class="col-md-4 col-form-label">Email Address<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="email" name="Email" formControlName="Email" class="form-control" id="inputUEmail" placeholder="" required maxlength="255">
+      <div *ngIf="Email.invalid && (isFormSubmitted||Email.dirty || Email.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="Email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="Email.errors.email">
+          Email pattern incorrect.
+        </div>
+        <div *ngIf="Email.errors.emailExists">
+          Email already exists.
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-md-4 col-form-label">Password<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="password" class="form-control" formControlName="Password" id="inputPassword" placeholder=" " required maxlength=" 255">
+      <div *ngIf="Password.invalid && (isFormSubmitted||Password.dirty || Password.touched)"
+           class="invalid-feedback">
+
+        <div *ngIf="Password.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="Password.errors.pattern">
+          Password pattern incorrect.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword2" class="col-md-4 col-form-label">Confirm Password<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="password" class="form-control" formControlName="ConfirmPassword" id="inputPassword2" placeholder="" required maxlength=" 255" pattern="{{Password.value}}">
+      <div *ngIf="ConfirmPassword.invalid && (isFormSubmitted||ConfirmPassword.dirty || ConfirmPassword.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="ConfirmPassword.errors.required">
+          Confirm Password is required.
+        </div>
+        <div *ngIf="ConfirmPassword.errors.pattern">
+          Confirm Password does not match password.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputRefferal" class="col-md-4 col-form-label">Refferal Number</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" formControlName="Refferal" id="inputRefferal" placeholder="" required maxlength=" 255">
+      <div *ngIf="Refferal.invalid && (isFormSubmitted||Refferal.dirty || Refferal.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="Refferal.errors.required">
+          Refferal is required.
+        </div>
+        <div *ngIf="Refferal.errors.pattern">
+          Refferal does not match password.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label for="inputDOB" class="col-md-4 col-form-label">Date of Birth</label>
+    <div class="col-md-8 form-group">
+      <input class="form-control"
+             bsDatepicker
+             placeholder="13-01-2019"
+               formControlName="DOB"
+             [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPhone" class="col-md-4 col-form-label">Phone Number<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="number" class="form-control" formControlName="Phone" id="inputPhone" placeholder="" required maxlength="12">
+      <div *ngIf="Phone.invalid && (isFormSubmitted||Phone.dirty || Phone.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="Phone.errors.required">
+          Phone Number is required.
+        </div>
+        <div *ngIf="Phone.errors.pattern">
+          Phone Number does not match password.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputSecQues" class="col-md-4 col-form-label">Security Question<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <select class="form-control" formControlName="SecurityQue" id="inputSecQues">
+        <option value=" ">1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      <div *ngIf="SecurityQue.invalid && (isFormSubmitted||SecurityQue.dirty || SecurityQue.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="SecurityQue.errors.required">
+          Security Question is required.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputSecAns" class="col-md-4 col-form-label">Security Answer<span class="text-danger">*</span></label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" formControlName="SecurityAns" id="inputSecAns" placeholder="" required maxlength="255">
+      <div *ngIf="SecurityAns.invalid && (isFormSubmitted||SecurityAns.dirty || SecurityAns.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="SecurityAns.errors.required">
+          Security Answeris required.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row no-gutters">
+    <label for="inputCode" class="col-md-2 col-form-label">Captcha<span class="text-danger">*</span></label>
+    <div class="col-4 pr-2">
+      <input type="text" class="form-control" id="inputCode" formControlName="Captcha" placeholder="Code" required maxlength="20">
+      <div *ngIf="Captcha.invalid && (isFormSubmitted||Captcha.dirty || Captcha.touched)"
+           class="invalid-feedback">
+        <!--TODO ConfirmPassword may not be touched)-->
+
+        <div *ngIf="Captcha.errors.required">
+          Captcha is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-4  pr-2">
+      <img [src]="captcha_srcURL"/>
+    </div>
+    <div class="col-md-2 col-4">
+      <span>Refresh?</span>
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="Terms" id="defaultCheck2">
+    <label class="form-check-label" for="defaultCheck2">
+      By selecting the SIGN IN button, I declare that I am 18 years or older. I have read and agreed to the Terms & Conditions. See <a href="#">Terms & Conditions</a> here.
+    </label>
+    <div *ngIf="Terms.invalid && (isFormSubmitted||Terms.dirty || Terms.touched)"
+         class="invalid-feedback">
+      <!--TODO ConfirmPassword may not be touched)-->
+
+      <div *ngIf="Terms.errors.required">
+        Terms is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group row text-center mt-3">
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,70 @@
+@import "variables";
+
+.footer-content {
+  font-size: 12px;
+}
+
+@mixin ul-style-none {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-content ul {
+  @include ul-style-none;
+}
+
+.footerlink ul li {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ 
+.footerlink ul li {
+  padding: 0 5px 0 0;
+  line-height: 24px;
+}
+
+.footerlink ul li a {
+  color: app-color(background,dark);
+}
+
+
+.footer-misc .column {
+  padding-right: 4rem;
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+
+  & .title {
+    font-weight: 900;
+  }
+
+  & .subtitle {
+    font-weight: 700;
+  }
+}
+
+
+
+
+.payment_imgs {
+
+   
+  & img {
+    /*width: 100px;
+    height: 25px;*/
+    margin-right:5px;
+  }
+}
+
+
+ul.pw-by a {
+  display: block;
+  height: 38px;
+
+}
+
+

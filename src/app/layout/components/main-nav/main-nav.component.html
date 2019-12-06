@@ -1,0 +1,57 @@
+<div class="nav-wrapper">
+  <div class="container">
+    <div class="main-nav nav nav-pills nav-fill ">
+
+      <div class="nav-item">
+        <a class="navlink" routerLink="home" routerLinkActive="active">
+          <i class="icon-home"></i>
+        </a>
+      </div>
+      <!--<div class="nav-item">
+        <a class="navlink" href="#home">
+          <i class="icon-mobile"></i>
+        </a>
+      </div>-->
+
+      <div class="nav-item" *ngFor="let menuItem of arrMenu">
+        <!--*ngFor="let menuItem of arrMenu"-->
+        <a class="navlink" [routerLink]="['/games',menuItem.MenuTitleCode]" routerLinkActive="active">
+          <!--[routerLink]="['/games/slots',menuItem.MenuTitle]"-->
+          <span> {{menuItem.MenuTitle}}</span>
+        </a>
+
+        <div class="nav-item-content ">
+          <!--<div class="header">
+            <h2>Mega Menu</h2>
+          </div>-->
+          <div class="container">
+            <div class="flex-row" *ngFor="let row of menuItem.Rows">
+              <ng-container *ngFor="let item of row.Items">
+                <div class="auto-box text-center" [ngClass]="{'flex-grow-2' : item.FlexGrow =='2'}">
+                  <a [routerLink]="[menuItem.MenuTitleCode, item.GameID]" [ngClass]="{'disableHover':item.IsDisabled}">
+                    <!--<h3>Category 1</h3>-->
+                    <img [src]="item.ImgSrc? BASE_MEDIA_URL+item.ImgSrc : ''" class="img-fluid">
+
+                    <div><h6>{{item.Name}}</h6></div>
+                    <!--<div class="navcontent_button_play"><span>PLAY NOW</span></div>-->
+                  </a>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="navlink" routerLink="/promotion"  routerLinkActive="active">
+          <span>PROMOS</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="navlink" routerLink="/referral"  routerLinkActive="active">
+          <span>REFERRAL</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>

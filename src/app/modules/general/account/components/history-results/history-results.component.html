@@ -1,0 +1,45 @@
+<div class=" mat-group" *ngIf="history">
+  <input type="text" class="mat-control" (keyup)="applyFilter($event.target.value)" required="required" /><span class="bar"></span>
+  <label>Filter</label>
+</div>
+<div class="loading-container " [class.mat-elevation-z8]="history&&history.historyLst&&history.historyLst.length>0">
+
+  <div class="loading-shade"
+       *ngIf="requestState&&requestState.inProgress">
+    <my-spinner *ngIf="loading"></my-spinner>
+  </div>
+
+  <div class="loading-shade"
+       *ngIf="requestState&&requestState.error">
+    <div>API rate limit has been reached. It will be reset in one minute.</div>
+  </div>
+
+  <ng-container *ngIf="history">
+
+    <div class="table-container">
+
+      <!--<input  (keyup)="applyFilter($event.target.value)" placeholder="Filter">-->
+
+
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container *ngFor="let disCol of history.displayedColumns; let colIndex = index" matColumnDef="{{disCol}}">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{disCol}}</mat-header-cell>
+          <mat-cell *matCellDef="let element ">
+            {{element[disCol]}}
+          </mat-cell>
+          <!--/*Total column Names*/-->
+          <mat-footer-cell *matFooterCellDef><span *ngIf="colIndex==( history.displayedColumns.length-4)">Total </span> <span *ngIf="disCol=='Credit' || disCol=='Debit'||disCol=='Balance'">{{getTotal(disCol)}} </span> </mat-footer-cell>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef=" history.displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:  history.displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef=" history.displayedColumns"></mat-footer-row>
+      </mat-table>
+
+    </div>
+    <mat-paginator [length]="history.resultsLength" [pageSizeOptions]="[2, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+</div>

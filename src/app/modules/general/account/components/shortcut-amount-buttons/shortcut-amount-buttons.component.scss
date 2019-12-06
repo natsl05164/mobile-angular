@@ -1,0 +1,29 @@
+@import "variables";
+
+.btn-amount {
+  display: block;
+  margin: 0 $spacing--default/2;
+
+
+  & .btn {
+    color: text-color(background,light);
+    border: 1px solid text-color(background,dark);
+    border-radius: $border-radius-sm;
+
+    &:focus, &:active {
+      background-color: app-color(background,light);
+      border-color: app-color(background,primary);
+      color: text-color(primary,base);
+    }
+  }
+
+  .col-3:first-of-type & {
+    margin-left: 0;
+  }
+
+  .col-3:nth-of-type(4n) & {
+    margin-right: 0;
+  }
+}
+
+ 

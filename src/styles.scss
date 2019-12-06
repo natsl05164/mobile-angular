@@ -1,0 +1,1377 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+/*------------------------------------------------
+  Add variables used in Bootstrap
+-------------------------------------------------*/
+/**Defaulted in Bootstrap : This means that if the variable has already been assigned to, it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.*/
+@import "variables";
+ 
+@import "mixins";
+  /*END Customize variables used in Bootstrap*/
+
+
+  /*----------------------------------
+  Import Font from google
+ -----------------------------------*/
+  @import url('https://fonts.googleapis.com/css?family=' + $google-font-family);
+
+  @import "../node_modules/bootstrap/scss/bootstrap";
+  html, body {
+    height: 100%;
+  }
+ .content, .full-container, .main-content, .container-wrapper {
+    height: auto;
+    min-height:800px;
+  }
+
+  body {
+    min-height: 1001px; //hardcoded to footer height
+  }
+
+.title {
+  color: $headings-color;
+  font-family: $headings-font-family;
+}
+
+.btn {
+
+  @include mobile_desktop_style(color, $body-color,$body-color-sm);
+
+  .btn:hover {
+    @include mobile_desktop_style(color, $body-color,$body-color-sm);
+  }
+}
+
+.btn-primary {
+  background-color: app-color(primary,base);
+  color: text-color(primary,base);
+  border-color: app-color(primary,base);
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: app-color(primary,light);
+    color: text-color(primary,dark);
+    border-color: app-color(primary,light);
+  }
+}
+
+.btn-primary--dark {
+  background-color: app-color(primary,dark);
+  color: text-color(primary,base);
+  border-color: app-color(primary,dark);
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: app-color(primary,light);
+    color: text-color(primary,dark);
+    border-color: app-color(primary,light);
+  }
+}
+
+
+.btn-secondary {
+  background-color: app-color(secondary,base);
+  color: text-color(primary,base);
+  border-color: app-color(secondary,base);
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: app-color(secondary,light);
+    color: text-color(secondary,base);
+    border-color: app-color(secondary,light);
+  }
+}
+
+
+.btn-tertiery {
+  background-color: app-color(accent,base);
+  color: text-color(primary,base);
+  border-color: app-color(accent,base);
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: app-color(accent,light);
+    color: text-color(primary,base);
+    border-color: app-color(accent,light);
+  }
+}
+
+.btn-fancy {
+  background-color: app-color(primary,base);
+  color: text-color(primary,base);
+  border-color: app-color(primary,base);
+  border-radius: $border-radius;
+  padding: 5px 1.5em;
+  @include font-size($h4-font-size);
+  font-weight: bold;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: color 1000ms;
+  transition: color 700ms;
+
+
+  &:hover {
+    background-color: app-color(primary,base);
+    color: text-color(primary,base);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: app-color(primary,light);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition: 300ms ease-out;
+    transition: 300ms ease-out;
+  }
+
+  &:hover:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+  .modal-header button.close {
+    outline: none;
+  }
+  .header {
+
+    &.danger {
+      background-color: $danger;
+    }
+
+    &.info {
+      background-color: $info;
+    }
+
+    &.warning {
+      background-color: $warning;
+    }
+
+    &.success {
+      background-color: $success;
+    }
+  }
+
+  .ico-alert {
+
+    &.danger {
+      color: $danger;
+    }
+
+    &.info {
+      color: $info;
+    }
+
+    &.warning {
+      color: $warning;
+    }
+
+    &.success {
+      color: $success;
+    }
+  }
+   
+  a:link, a:visited {
+    /*color: inherit;*/
+    text-decoration: none !important;
+  }
+
+  b, strong {
+    font-weight: bolder;
+    font-weight: 700;
+  }
+
+
+  .material-icons {
+    font-size: inherit;
+  }
+
+
+  @each $color, $value in $extra-text-colors {
+    @include text-emphasis-variant(".text-#{$color}", $value);
+  }
+
+  .font-size-sm {
+    @include font-size($font-size-sm !important);
+  }
+
+  .font-size-lg {
+    @include font-size($font-size-lg !important);
+  }
+
+  .fs-md {
+    @include font-size($font-size-md !important);
+  }
+
+  .fs-sm {
+    @include font-size($font-size-sm !important);
+  }
+
+
+  .fs-lg {
+    @include font-size($font-size-lg !important);
+  }
+
+
+  .fs-xl {
+    @include font-size($font-size-xl !important);
+  }
+
+  .fs-xs {
+    @include font-size($font-size-xs !important);
+  }
+
+  .fs-xxs {
+    @include font-size($font-size-xxs !important);
+  }
+
+
+  /*=======Helpers=========*/
+
+  .noSidePadding {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  /*elements*/
+  .pointer {
+    cursor: pointer;
+  }
+
+  i {
+    color: inherit;
+  }
+
+  ul, ol {
+    padding: 0;
+    margin: 0 0 10px 25px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+  }
+
+  .dotted_line {
+    border-bottom: 1px dotted #D8D8D8;
+  }
+
+
+  .img-center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .center {
+    margin: 0 auto; /*TODO**/
+  }
+
+  /*positioning*/
+  .flex-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+
+  .flex-no-wrap {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .flex-wrap {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  /*.flex-wrap {   bootstrap has this class
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }*/
+  .flex-grow {
+    -ms-flex: 1;
+    flex: 1;
+    -ms-flex-negative: 1;
+    -ms-flex-preferred-size: auto !important;
+  }
+
+  .flex-align-top {
+    align-items: flex-start;
+  }
+
+
+  .auto-box {
+    min-width: 120px;
+    /*max-width: 140px;*/
+    flex-basis: 0; /* default value */
+    flex-grow: 1; /* default value */
+    .mobile & {
+      min-width: 100px;
+      max-width: 100px;
+    }
+  }
+
+
+
+  .flex-grow-2 {
+    flex-grow: 2 !important;
+  }
+
+  .flex-grow-3 {
+    flex-grow: 3 !important;
+  }
+
+
+  .border-box {
+    border: 1px solid app-color(background,light);
+    padding: 1em;
+  }
+  /*====================Helpers End==============================*/
+
+
+
+  /*====================UI Elements==============================*/
+  /*UI styles*/
+  /*Gradient borders(right and bottom)*/
+  .gradient-border {
+    position: relative;
+    /*bottom border*/
+    &:before {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      width: 90%;
+      height: 0;
+      border-bottom: 2px solid #D8D8D8;
+      border-image: linear-gradient( to right, rgba(0, 0, 0, 0), #D8D8D8, rgba(0, 0, 0, 0) ) 1 100%;
+      border-image-slice: 1 1 1 1;
+    }
+    /*right border*/
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      content: '';
+      width: 0;
+      height: 90%;
+      border-right: 2px solid #D8D8D8;
+      border-image: linear-gradient( to bottom, rgba(0, 0, 0, 0), #D8D8D8, rgba(0, 0, 0, 0) ) 1 100%;
+      border-image-slice: 1 1 1 1;
+    }
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px ) and (max-width: 991px ) {
+      &:nth-of-type(2n):after {
+        content: none;
+      }
+
+      &:nth-last-of-type(1):before {
+        content: none;
+      }
+
+      &:nth-last-of-type(2):before {
+        content: none;
+      }
+    }
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      &:nth-of-type(3n):after {
+        content: none;
+      }
+
+      &:nth-last-of-type(1):before {
+        content: none;
+      }
+
+      &:nth-last-of-type(2):before {
+        content: none;
+      }
+
+      &:nth-last-of-type(3):before {
+        content: none;
+      }
+    }
+  }
+
+
+  .gradient-box {
+    display: flex;
+    align-items: center;
+    //width: 50vw;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    /*padding: 2em;*/
+    box-sizing: border-box;
+
+    $border: 5px;
+    /*color: #FFF;*/
+    background-color: $body-bg;
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+    border-radius: 1em;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(to right, #AF7929, #F9E167);
+    }
+  }
+
+
+  .pagination-page > .page-link {
+    color: red !important;
+    font-size: 0;
+    border-radius: 50%;
+    width: 0;
+    padding: 5px 5px;
+    margin: 5px;
+    background-color: #C2C2C2;
+  }
+
+  .page-item:first-child .page-link {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+
+  .page-item:last-child .page-link {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+
+
+  .pager-btn a {
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .divider {
+    border-right: 1px solid currentColor;
+    width: 1px;
+    /* height: 100%; */
+    min-height: 1.2em;
+    height: 90%;
+    display: inline-block;
+    margin: auto 0;
+  }
+
+  .separator-right {
+    border-right: 1px solid app-color(background,base);
+  }
+
+  .svg-icon {
+    display: inline-block;
+    fill: currentColor;
+    height: 1em;
+    position: relative;
+    top: -0.0625em;
+    vertical-align: middle;
+    width: 1em;
+  }
+  /*====================UI Elements END==============================*/
+  /*Custom colours*/
+  .site-footer {
+    background-color: $footer-bg;
+    bottom: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .footer-misc {
+    color: #bfbfbf;
+  }
+
+
+
+
+
+  .social-icons {
+    color: silver !important;
+    font-size: 1.5rem;
+  }
+
+  .fc-right .button {
+    background-color: #2A627C !important;
+  }
+
+
+  .social-icons .button.icon:hover > i {
+    color: #fff !important;
+  }
+
+
+
+
+
+
+.button {
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: inherit;
+  letter-spacing: .03em;
+  -ms-touch-action: none;
+  touch-action: none;
+  cursor: pointer;
+  font-weight: bolder;
+  text-align: center;
+  color: currentColor;
+  text-decoration: none;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  border-radius: $border-radius;
+  margin-top: 0;
+  margin-right: 1em;
+  text-shadow: none;
+  line-height: 2.4em;
+  min-height: 2.5em;
+  padding: 0 1.2em;
+  max-width: 100%;
+  transition: transform .3s,border .3s,background .3s,box-shadow .3s,opacity .3s,color .3s;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+
+  &.facebook:hover {
+    color: #3a589d !important;
+  }
+
+  &.twitter:hover {
+    color: #38C0FF !important;
+  }
+
+  &.instagram:hover {
+    color: #3b6994 !important
+  }
+
+  &.youtube:hover {
+    color: #F90018 !important
+  }
+
+  &.is-outline {
+    line-height: 2.19em;
+    border: 2px solid currentColor;
+    background-color: transparent;
+  }
+
+  &.icon {
+    margin-left: .12em;
+    margin-right: .12em;
+    min-width: 2.5em;
+    padding-left: .6em;
+    padding-right: .6em;
+    display: inline-block;
+
+    &.circle {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    & i {
+      font-size: 1.4em;
+    }
+  }
+
+  & i {
+    vertical-align: middle;
+    top: -1.5px;
+  }
+}
+
+
+
+  .circle {
+    border-radius: 50% !important;
+    object-fit: cover;
+  }
+
+  .min-circle {
+    max-height: 2em !important;
+    min-width: 1.8em !important;
+    line-height: 1.6em !important;
+    min-height: 1.8em;
+
+    & i {
+      vertical-align: middle;
+      bottom: 1.5px;
+      position: relative;
+    }
+  }
+
+  .social-icons i {
+    min-width: 1em;
+  }
+
+
+  .social-icons .button.icon:hover {
+    background-color: currentColor !important;
+    border-color: currentColor !important;
+  }
+
+
+
+  .toptobottom {
+    text-orientation: sideways-right;
+    writing-mode: vertical-rl;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: pt-sans, sans-serif;
+    text-transform: uppercase;
+  }
+
+
+
+
+  @media (min-width: 600px) {
+    .modal-sm {
+      max-width: 350px;
+    }
+  }
+
+  .modal-backdrop.show {
+    opacity: 0.8;
+    background-color: $overlay;
+    z-index: 1049;
+  }
+
+  /*Home components*/
+  .ann-wrapper {
+
+    & i {
+      color: text-color(secondary,base);
+    }
+  }
+
+.member-service {
+
+  & i {
+    color: text-color(primary2,base);
+  }
+
+  .mobile & {
+    & i {
+      color: $primary;
+    }
+
+    & .mobile-text > * {
+      color: $primary-text !important;
+    }
+
+    & .content-item {
+      display: inline-block;
+    }
+  }
+}
+
+
+  input[type="password"] {
+    letter-spacing: 0.3em;
+  }
+
+  .form-control.ng-invalid.ng-dirty, .was-validated .form-control.ng-invalid {
+    border-color: $form-feedback-invalid-color !important;
+
+    @if $enable-validation-icons {
+      padding-right: $input-height-inner !important;
+      background-image: $form-feedback-icon-invalid !important;
+      background-repeat: no-repeat !important;
+      background-position: center right $input-height-inner-quarter !important;
+      background-size: $input-height-inner-half $input-height-inner-half !important;
+    }
+
+    &:focus {
+      border-color: $form-feedback-invalid-color !important;
+      box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-invalid-color, .25) !important;
+    }
+  }
+
+
+
+  .was-validated .form-control.ng-invalid ~ .invalid-feedback, .form-control.ng-invalid.ng-dirty ~ .invalid-feedback {
+    display: block;
+  }
+
+  .was-validated .form-check-input.ng-invalid ~ .invalid-feedback, .was-validated .form-check-input.ng-invalid ~ .invalid-tooltip {
+    display: block;
+  }
+
+  .was-validated .form-check-input.ng-invalid ~ .form-check-label, .form-check-input.ng-invalid.ng-dirty ~ .form-check-label {
+    color: $form-feedback-invalid-color !important;
+  }
+
+ 
+  app-slots-main {
+
+    & .content-wrapper {
+      height: 80% !important;
+    }
+
+    & ul.pagination {
+      margin-left: -4em;
+    }
+  }
+
+  .primary-text-box {
+    position: absolute;
+    background-color: $primary;
+    opacity: 0.5;
+    padding: 7px;
+    right: 0;
+    bottom: 0;
+  }
+
+
+  .dialog {
+    border: 1px solid $primary;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    background-color: $body-bg;
+
+    &.arrow-top {
+      margin-top: 15px;
+    }
+
+    &.arrow-top:after {
+      content: " ";
+      position: absolute;
+      left: 30px;
+      top: -15px;
+      border-top: none;
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+      border-bottom: 15px solid $primary;
+      z-index: 2;
+    }
+
+    &.arrow-top:before {
+      content: " ";
+      position: absolute;
+      left: 30px;
+      top: -14px;
+      border-top: none;
+      border-right: 14px solid transparent;
+      border-left: 15px solid transparent;
+      border-bottom: 15px solid $body-bg;
+      z-index: 4;
+    }
+  }
+
+
+
+  .input-l {
+    padding: 16px 18px 17px;
+  }
+
+  .icon-input input {
+    padding-left: 46px;
+    height: auto;
+  }
+
+  .icon-input {
+    position: relative;
+  }
+
+  .icon-input i {
+    color: text-color(primary2,base);
+    position: absolute;
+    top: 19px;
+    left: 18px;
+    transition: all .2s ease;
+  }
+
+  .banner-content {
+    min-height: 560px;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 1em;
+  }
+
+  .banner-title {
+    font-size: 50px;
+    font-family: dinpro;
+    font-weight: bold;
+  }
+  //background image
+  .page-background {
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -50%;
+    margin-right: -50%;
+    background-size:cover;
+  }
+
+
+
+
+
+  @import '~@angular/material/theming';
+
+
+  .mat-elevation-z8 {
+    // Adds a shadow for elevation level 2 with color #e91e63 and 80% of the default opacity:
+    @include mat-elevation(8, app-color(background,dark), 0.8);
+  }
+
+
+  .mat-table {
+    background: var(--bg-0);
+  }
+
+
+  mat-footer-row, mat-header-row, mat-row, td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    border-bottom-color: rgba(0,0,0,.12);
+  }
+
+
+  .mat-header-cell {
+    @include font-size($font-size-base);
+    font-weight: 500;
+    color: rgba(0,0,0,.54);
+  }
+
+
+  .mat-cell, .mat-footer-cell {
+    @include font-size($font-size-lg);
+    color: rgba(0,0,0,.87);
+  }
+
+
+
+
+
+
+  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+    .info-nav a {
+      font-size: 12px !important;
+
+      & i {
+        font-size: 30px !important;
+      }
+    }
+  }
+
+
+
+  nav {
+    text-align: center;
+    font-size: $h5-font-size;
+  }
+
+.navbar {
+  border-radius: $border-radius;
+  min-height: auto;
+  margin: 20px 0px;
+}
+
+  .navbar-default {
+    background: none;
+    border: none;
+    position: relative;
+
+    & .navbar-nav li {
+      /*float: none;
+    display: inline-block;*/
+      /* line-height: 35px; */
+      border-right: 1px var(--t300) solid;
+      padding: 0px 12px 0px 7px;
+      margin: 5px 0px;
+
+      &:last-of-type {
+        border-right: none;
+      }
+
+      & .nav-link {
+        padding: 0;
+        margin: 0;
+        color: var(--t500);
+      }
+    }
+  }
+
+  .navbar-default .navbar-nav {
+
+
+    & > .active {
+      & > a, & > a:focus, & > a:hover {
+        color: var(--primary) !important;
+        background: none;
+      }
+    }
+
+    & a.nav-link:focus, & a.nav-link:hover {
+      color: var(--primary) !important;
+      background: none;
+    }
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    display: -webkit-box !important;
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+    .navbar-default.navbar-collapse {
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+    .hidden-md {
+      display: none !important;
+    }
+
+    .navbar-default {
+      background-color: app-color(foreground,base);
+      border-color: app-color(background,base);
+      border: 1px solid app-color(background,light);
+    }
+
+    .navbar-default .navbar-nav li {
+      display: block;
+      background: none;
+      border-right: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+      background: app-color(background,base);
+    }
+
+    .navbar {
+      padding: 0;
+    }
+
+    .navbar-header {
+      background-color: app-color(background,base);
+      padding: 5px 8px;
+      width: 100%;
+
+
+      & .navbar-toggler {
+        float: right;
+        z-index: 3;
+        position: relative;
+      }
+
+
+      & .menu-select {
+        color: #2A8FBD;
+        text-align: center;
+        float: left;
+        width: 100%;
+        margin-top: -25px;
+        z-index: 1;
+      }
+    }
+
+
+    div.menu-select {
+      display: block;
+    }
+
+    .navbar-nav {
+      margin: 0;
+      width: 100%;
+    }
+
+    .navbar-default {
+
+      & .navbar-toggler {
+        background-color: app-color(background,base );
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+      }
+
+      & .navbar-toggler-icon {
+        color: text-color(primary,base ) !important;
+      }
+
+      & .navbar-nav > li > a.nav-link {
+        border-bottom: 1px app-color(background,light) solid;
+        /*font-size: 15px;*/
+        padding: 10px 0px;
+
+        &:hover, &:focus {
+          background: app-color(background,base);
+        }
+      }
+    }
+
+    .collapse {
+      transition: all 0.3s ease-out;
+      display: block !important;
+      overflow: hidden !important;
+      max-height: 0;
+    }
+
+    .collapse.in {
+      transition: all 0.8s ease-in;
+      max-height: 3000px; /*any number which is lager than a height of any of your elements*/
+    }
+  }
+
+
+
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  }
+
+
+
+  .mat-expansion-panel-body {
+    padding: 15px !important;
+  }
+
+  .mat-expansion-panel-content {
+    border-right: 1px solid app-color(background,light);
+    border-left: 1px solid app-color(background,light);
+  }
+
+.panel-group {
+  & .mat-expansion-panel {
+    border-radius: $border-radius !important;
+    box-shadow: none;
+    border-bottom: 1px solid app-color(background,light);
+  }
+
+  & .mat-expansion-panel-header {
+    padding-left: 15px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: app-color(primary,dark ) !important; /*important as the material expansion style seems to be loaded after this file*/
+      color: $primary-text !important;
+      padding-left: 25px;
+    }
+  }
+
+  & .mat-expansion-panel-spacing {
+    margin: 0px !important;
+  }
+
+  & .mat-expanded {
+    & .mat-expansion-panel-header {
+      background-color: app-color(primary,dark ) !important;
+      color: $primary-text !important;
+    }
+  }
+}
+
+
+.table-default {
+
+  & thead th {
+    background-color: app-color(background,base);
+    vertical-align: middle;
+  }
+
+  & td, & th {
+    border: 1px solid text-color(primary,base );
+    text-align: center;
+  }
+
+  & .thead, & tr.first-child td:first-child {
+    color: text-color(secondary,dark );
+    font-weight: bold;
+  }
+
+  & tr > td {
+    background-color: app-color(background,base);
+    vertical-align: middle;
+  }
+}
+
+
+  .divWalletBalance {
+    padding: 0.5em;
+    @include font-size($font-size-sm !important);
+    /*& th {
+    @include font-size($font-size-md !important);
+  }*/
+    & .td-last-child {
+      min-width: 100px;
+      height: 1rem;
+      text-align: right;
+    }
+
+    & .td-first-child {
+      width: auto;
+      height: 1rem;
+      vertical-align: middle;
+      min-width: 100px;
+    }
+
+    & ~ hr {
+      margin-top: 0.3em;
+      margin-bottom: 0.2em;
+    }
+  }
+
+
+
+
+
+.popover {
+  border-radius: $border-radius;
+  border: 1px solid #808080;
+  background: #fafafa;
+}
+  /*---Logos Powered By START*/
+  .logo_ag {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -139px -175px;
+    width: 53px;
+
+    &:hover, .active & {
+      background-position: -26px -175px;
+    }
+  }
+
+  .logo_cmd {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -124px -1px;
+    width: 82px;
+
+    &:hover, .active & {
+      background-position: -11px -1px;
+    }
+  }
+
+
+  .logo_gp {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -147px -50px;
+    width: 37px;
+
+    &:hover, .active & {
+      background-position: -34px -50px;
+    }
+  }
+
+  .logo_pp {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -152px -559px;
+    width: 28px;
+    height: 39px;
+
+    &:hover, .active & {
+      background-position: -39px -559px;
+    }
+  }
+
+  .logo_sbo {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -142px -694px;
+    width: 44px;
+    height: 39px;
+
+    &:hover, .active & {
+      background-position: -27px -694px;
+    }
+  }
+
+  .logo_sg {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -149px -422px;
+    width: 32px;
+    height: 37px;
+
+    &:hover, .active & {
+      background-position: -36px -422px;
+    }
+  }
+
+  .logo_hb {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -153px -627px;
+    width: 26px;
+    height: 39px;
+
+    &:hover, .active & {
+      background-position: -40px -627px;
+    }
+  }
+
+  .logo_joker {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -127px -1210px;
+    width: 71px;
+    height: 37px;
+
+    &:hover, .active & {
+      background-position: -19px -1210px;
+    }
+  }
+
+  .logo_mg {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -148px -358px;
+    width: 35px;
+    height: 35px;
+
+    &:hover, .active & {
+      background-position: -35px -358px;
+    }
+  }
+
+  .logo_dmc {
+    background: url('/assets/images/powered_by/pw_by.png') no-repeat -127px -909px;
+    width: 71px;
+    height: 31px;
+
+    &:hover, .active & {
+      background-position: -19px -909px;
+    }
+  }
+  /*---Logos Powered By END*/
+  /*==================other theme elements=========================*/
+  /*==============================================================*/
+  // VARIABLES // ============================== //
+
+  $hl-color: $mat-control-highlight;
+  $muted-color: mix($body-color, $body-bg, 70%);
+  $trans-time: 300ms;
+  $width: 100%;
+
+  .mat-group {
+    position: relative;
+    margin: 15px 0;
+  }
+  // INPUTS // ============================== //
+  textarea.mat-control {
+    resize: none;
+  }
+
+input.mat-control,
+textarea.mat-control {
+  background: none;
+  color: $muted-color;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: $width;
+  border: none;
+  border-radius: $border-radius;
+  border-bottom: 1px solid $muted-color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus ~ label,
+  &:valid ~ label,
+  &:disabled ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: $hl-color;
+  }
+
+  &:focus ~ .bar:before {
+    width: $width;
+  }
+}
+
+
+  .mat-group {
+
+    & label {
+      color: $muted-color;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      top: 10px;
+      transition: $trans-time ease all;
+    }
+
+    & .bar {
+      position: relative;
+      display: block;
+      width: $width;
+
+      &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: $hl-color;
+        transition: $trans-time ease all;
+        left: 0%;
+      }
+    }
+  }
+  /*------------------------------*/
+  /*=====================MOBILE styles START==========================*/
+  @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+    /*@import "mobile-variables"*/;
+
+    html, body, .content, .full-container, .main-content, .container-wrapper {
+      height: 100%;
+    }
+
+    body.mobile {
+      background-color: $body-bg-sm;
+      color: $body-color-sm;
+
+
+      h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: text-color(primary,base);
+      }
+
+      h4 {
+        font-size: $h4-font-size--sm;
+      }
+
+      h5 {
+        font-size: $h5-font-size--sm;
+      }
+
+
+      & .gradient-box {
+        background-color: $body-bg;
+      }
+
+      & .gradient-border:after, & .gradient-border:before {
+        content: none;
+      }
+
+      & .mobile-border {
+        display: block;
+        border-top: 3px solid app-color(primary,dark,0.3);
+        @include full-width;
+      }
+
+      & .overlay-wrapper {
+        box-shadow: $box-shadow-sm;
+      }
+
+      .btn-fancy {
+        background-color: app-color(primary,base);
+      }
+    }
+  }
+  /*=====================MOBILE styles END ==========================*/
+

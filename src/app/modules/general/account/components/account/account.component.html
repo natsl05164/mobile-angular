@@ -1,0 +1,112 @@
+
+ 
+    <div class="container-wrapper fs-md" *ngIf="allBalance">
+      <div class="container container-box noSidePadding">
+        <div class="title fs-lg">My Account</div>
+        <div class="head-content">
+          <div class="row no-gutters">
+            <div class="col-12 col-sm-6 col-md-7">
+              <div class="row ">
+                <div class="clearfix col-12 col-md-7">
+                  <div class="float-left mr-2">
+                    <i class="icon-shield"></i>
+                  </div>
+                  <div class="acc_safety_info ">
+                    <div class="fs-md">Account Safety:Normal</div>
+                    <div class="info-2">
+                      <a  routerLink="/profile/edit"><i class="icon-user1"></i></a>
+                      <a href="#"><i class="icon-credit-card-alt"></i></a>
+                      <a href="#"><i class="icon-mobile1"></i></a>
+                      <a href="#"><i class="icon-envelope"></i></a>
+                    </div>
+
+                  </div>
+                </div>
+                <div class=" col-12 col-md-5 mt-4  mt-md-2 text-center">
+                  You have  0 unread new messages(s) from us.
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-5  mt-4  mt-md-2  total-bal-box">
+
+              <div class="d-inline-block">
+                <div>
+                  <a href="javascript:void(0)" (click)="onUserAction.emit(UserAction.RefreshBalance)">
+                    <i class="icon-refresh"></i>
+                  </a>
+                </div>
+                <div>
+                  <a href="javascript:void(0)" class=""
+                     [popover]="popTemplate"
+                     placement="bottom">
+                    {{allBalance.TotalBalance}}
+                  </a>
+                </div>
+                <div>Balance</div> 
+                <!--<div>(except Poker + F1 Fishing)</div>-->
+                <ng-template #popTemplate>
+                  <div class="divWalletBalance">
+                    <table class="table-wallet " id="tableWallet" *ngIf="allBalance">
+                      <thead>
+                        <tr>
+                          <th class="td-first-child bold nowrap"><b>Wallet</b></th>
+                          <th class="td-last-child bold nowrap"><b>Balance</b></th>
+                        </tr> 
+                      </thead>
+                      <tbody>
+                      
+                        <tr>
+                          <td class="td-first-child"  i18n="@@MainWallet">Main</td>
+                          <td class="td-last-child">{{allBalance.WalletAmt}}</td>
+                        </tr>
+                        <tr *ngFor="let gameBal of allBalance.GameBalList ">
+                          <td class="td-first-child">{{gameBal.GameProvider}}</td>
+                          <td class="td-last-child" id="{{gameBal.GameProviderID}}">{{gameBal.Balance}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    <ng-template #loading>
+                      <my-spinner></my-spinner>
+                    </ng-template>
+                  </div>
+                  <hr />
+                  <div class="divWalletBalance">
+                    <table class="table-bal"> 
+                      <tr>
+                        <th class="td-first-child bold nowrap"><b>Total</b></th>
+                        <th class="td-last-child bold nowrap"><b>{{allBalance.TotalBalance}}</b></th>
+                      </tr> 
+                    </table>
+                  </div>
+                </ng-template>
+              </div>
+              <div class="divider d-inline-block"></div>
+              <div class="d-inline-block">
+                <div><a (click)="onUserAction.emit(UserAction.RefreshBalance)" href="javascript:void(0);"><i class="icon-refresh"></i></a></div>
+                <div>{{allBalance.RewardPoints}}</div>
+                <div>Reward Points</div>
+                <!--<div>(except Poker + F1 Fishing)</div>-->
+              </div>
+
+            </div>
+            <div class="col-12 col-md-8">
+              <ul class="account_menu">
+                <li><a routerLink="/account/transfer" [routerLinkActive]="['btn-active']" i18n="@@Transfer">Transfer</a></li>  <!--(click)="accComm.sendGameBalanceLst(allBalance)"-->
+                <li><a class="" routerLink="/account/deposit" [routerLinkActive]="['btn-active']" i18n="@@Deposit">Deposit</a></li>
+
+                <li><a class=" " routerLink="/account/withdrawal" [routerLinkActive]="['btn-active']"   i18n="@@Withdrawal">Withdrawal</a></li>  <!--(click)="accComm.sendGameBalanceLst(allBalance)"-->
+
+                <li><a class=" " routerLink="/account/history" [routerLinkActive]="['btn-active']"  i18n="@@History">History</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content"> 
+          <router-outlet>
+             
+          </router-outlet>
+        </div>
+
+      </div>
+    </div>

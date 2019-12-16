@@ -45,11 +45,11 @@ import { RequestCache } from './interceptors/services/request-cache.service';
             useClass: CachingInterceptor,
             multi: true
         },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpTokenInterceptor,
-            multi: true
-        }
+        //{
+        //    provide: HTTP_INTERCEPTORS,
+        //    useClass: HttpTokenInterceptor,
+        //    multi: true
+        //}
         //{
         //  provide: HTTP_INTERCEPTORS,
         //  useClass: ErrorHandlerInterceptor,

@@ -13,8 +13,17 @@ if (environment.production) {
 //  platformBrowserDynamic().bootstrapModule(AppModule)
 //  .catch(err => console.error(err));
 //});
-
-let onDeviceReady = () => {
-    platformBrowserDynamic().bootstrapModule(AppModule);
+const bootstrap = () => {
+    platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
 };
-document.addEventListener('deviceready', onDeviceReady, false);
+
+if (typeof window['cordova'] !== 'undefined') {
+    document.addEventListener('deviceready', () => { bootstrap(); }, false);
+
+}
+else {
+        document.addEventListener('DOMContentLoaded', () => {
+            bootstrap();
+    });
+}
+ 
